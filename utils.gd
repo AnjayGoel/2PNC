@@ -7,7 +7,8 @@ extends Node
 
 
 var current_scene = null
-
+var lobby_scene = null
+var welcome_scene = null
 
 func _ready():
 	var root = get_tree().get_root()
@@ -28,7 +29,6 @@ func get_scene_path(scene):
 
 
 func deferred_goto_scene(scene,hide=false):
-	current_scene.hide()
 	if hide:
 		current_scene.hide()
 	else:

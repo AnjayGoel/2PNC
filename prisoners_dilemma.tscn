@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/themes/ws_font_2.tres" type="DynamicFont" id=3]
 [ext_resource path="res://prisoners_dilemma.gd" type="Script" id=4]
 
-[node name="Control" type="Control"]
+[node name="PrisonersDilemma" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 100.0
@@ -39,7 +39,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="client" type="Label" parent="."]
+[node name="opp" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 0.05
 anchor_right = 1.0
@@ -54,7 +54,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="server" type="Label" parent="."]
+[node name="you" type="Label" parent="."]
 anchor_top = 0.05
 anchor_right = 0.5
 anchor_bottom = 0.05
@@ -75,7 +75,7 @@ margin_left = 20.0
 margin_top = 40.0
 custom_fonts/font = ExtResource( 2 )
 text = "Payoff
-(You, PLayer Two)
+(You, Opponent)
 (Confess, Confess) = -5
 (Confess, Deny) = 0
 (Deny, Confess) = -10
@@ -123,4 +123,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="pressed" from="confess" to="." method="_on_confess_pressed"]
+[connection signal="pressed" from="deny" to="." method="_on_deny_pressed"]
 [connection signal="pressed" from="loby" to="." method="_on_loby_pressed"]

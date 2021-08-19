@@ -20,11 +20,12 @@ func _ready():
 	get_tree().connect("connected_to_server", self, "_connected_ok")
 	get_tree().connect("connection_failed", self, "_connected_fail")
 	get_tree().connect("server_disconnected", self, "_server_disconnected")
+	var root = get_tree().get_root()
+	Utils.welcome_scene = root.get_child(root.get_child_count() - 1)
 
 
 
 
-var scene = null
 # Callback from SceneTree.
 func _player_connected(_id):
 	hide()
