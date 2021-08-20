@@ -16,12 +16,12 @@ func _ready():
 #func _process(delta):
 #	pass
 sync func goto_game(scene):
-	Utils.goto_scene(scene)
+	Transit.fade_scene(scene)
 
 func load_prisoners_dilemma():
 	if get_tree().is_network_server():
 		print("Netowrk Server")
-		rpc("goto_game","prisoners_dilemma")
+		rpc("goto_game","prisoners_dilemma_startup")
 
 	#Utils.goto_scene("prisoners_dilemma")
 	#rpc("Utils.goto_scene","prisoners_dilemma")

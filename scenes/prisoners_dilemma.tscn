@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=1]
-[ext_resource path="res://assets/themes/left_end.tres" type="StyleBox" id=2]
-[ext_resource path="res://prisoners_dilemma.gd" type="Script" id=4]
+[ext_resource path="res://logic/prisoners_dilemma.gd" type="Script" id=2]
+[ext_resource path="res://assets/themes/left_end.tres" type="StyleBox" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 0.254902, 0.254902, 1 )
@@ -20,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 100.0
 theme = ExtResource( 1 )
-script = ExtResource( 4 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -32,7 +32,7 @@ margin_top = 15.0
 margin_right = 40.0
 margin_bottom = 15.0
 size_flags_horizontal = 0
-custom_styles/normal = ExtResource( 2 )
+custom_styles/normal = ExtResource( 3 )
 text = "  Round: 1 "
 align = 1
 valign = 1
@@ -45,7 +45,7 @@ anchor_bottom = 0.05
 margin_top = 15.0
 margin_right = 40.0
 margin_bottom = 15.0
-custom_styles/normal = ExtResource( 2 )
+custom_styles/normal = ExtResource( 3 )
 text = "  15 "
 align = 1
 valign = 1
@@ -57,6 +57,7 @@ __meta__ = {
 anchor_left = 0.4
 anchor_right = 0.6
 anchor_bottom = 0.05
+size_flags_horizontal = 4
 custom_styles/normal = SubResource( 1 )
 text = "0 vs 0"
 align = 1

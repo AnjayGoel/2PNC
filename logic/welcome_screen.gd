@@ -35,7 +35,7 @@ func _player_connected(_id):
 	print("Player Con")
 	cancel_button.hide()
 	hide()
-	Utils.add_scene("game_list")
+	Transit.fade_scene("game_list",true)
 
 
 func _player_disconnected(_id):

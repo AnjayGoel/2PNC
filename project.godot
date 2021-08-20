@@ -14,12 +14,13 @@ config/name="2PNC"
 config/description="A multiplayer demo of the classical pong game.
 One of the players should press 'host', while the
 other should select the address and press 'join'."
-run/main_scene="res://welcome_screen.tscn"
+run/main_scene="res://scenes/welcome_screen.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Utils="*res://utils.gd"
+Utils="*res://logic/utils.gd"
+Transit="*res://logic/Transit.tscn"
 
 [debug]
 

@@ -25,7 +25,7 @@ func get_ip():
 
 
 func get_scene_path(scene):
-	return "res://%s.tscn"%scene
+	return "res://scenes/%s.tscn"%scene
 
 
 func deferred_goto_scene(scene,hide=false):

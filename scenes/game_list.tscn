@@ -2,14 +2,14 @@
 
 [ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/themes/font_120.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/themes/font_60.tres" type="DynamicFont" id=3]
-[ext_resource path="res://game_list.gd" type="Script" id=4]
+[ext_resource path="res://logic/game_list.gd" type="Script" id=3]
+[ext_resource path="res://assets/themes/font_60.tres" type="DynamicFont" id=4]
 
 [node name="GameList" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -34,7 +34,7 @@ anchor_bottom = 0.8
 margin_left = 40.0
 margin_top = 10.0
 margin_right = -40.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 text = "Prisoners Dillema"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -47,7 +47,7 @@ anchor_bottom = 0.7
 margin_left = 40.0
 margin_top = 10.0
 margin_right = -40.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 text = "RockPaperScissor"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -61,7 +61,7 @@ margin_left = 40.0
 margin_top = 10.0
 margin_right = -40.0
 rect_pivot_offset = Vector2( -2735.23, 779.588 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 text = "Shield Load Shoot"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -75,7 +75,7 @@ margin_left = 40.0
 margin_top = 10.0
 margin_right = -40.0
 rect_pivot_offset = Vector2( -2735.23, 779.588 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 text = "Tick Tack Toe"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -87,7 +87,7 @@ anchor_top = 0.85
 anchor_right = 1.0
 anchor_bottom = 0.95
 margin_right = -40.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 text = "Home"
 __meta__ = {
 "_edit_use_anchors_": false
