@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=1]
-[ext_resource path="res://assets/themes/ws_font_small.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/themes/ws_font_2.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/themes/font_120.tres" type="DynamicFont" id=2]
 [ext_resource path="res://game_list.gd" type="Script" id=4]
 
 [node name="GameList" type="Control"]
@@ -20,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 0.15
 margin_right = 40.0
 margin_bottom = 14.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 text = "Select Game"
 align = 1
 __meta__ = {
@@ -34,7 +33,6 @@ anchor_bottom = 0.3
 margin_left = 40.0
 margin_top = 10.0
 margin_right = -40.0
-custom_fonts/font = ExtResource( 2 )
 text = "Prisoners Dillema"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -47,7 +45,6 @@ anchor_bottom = 0.4
 margin_left = 40.0
 margin_top = 10.0
 margin_right = -40.0
-custom_fonts/font = ExtResource( 2 )
 text = "RockPaperScissor"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -61,7 +58,6 @@ margin_left = 40.0
 margin_top = 10.0
 margin_right = -40.0
 rect_pivot_offset = Vector2( -2735.23, 779.588 )
-custom_fonts/font = ExtResource( 2 )
 text = "Shield Load Shoot"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -75,7 +71,6 @@ margin_left = 40.0
 margin_top = 10.0
 margin_right = -40.0
 rect_pivot_offset = Vector2( -2735.23, 779.588 )
-custom_fonts/font = ExtResource( 2 )
 text = "Tick Tack Toe"
 __meta__ = {
 "_edit_use_anchors_": false

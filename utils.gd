@@ -29,6 +29,7 @@ func get_scene_path(scene):
 
 
 func deferred_goto_scene(scene,hide=false):
+	print("scene: %s"%scene)
 	if hide:
 		current_scene.hide()
 	else:

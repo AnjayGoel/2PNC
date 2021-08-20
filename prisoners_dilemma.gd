@@ -12,14 +12,15 @@ var p2_last_score = 0
 
 var p1_move = -1
 var p2_move =-1
-
+var p1_label = ""
+var p2_label = ""
 
 
 
 onready var round_label = $round
 onready var timer = $timer
-onready var you = $you
-onready var opp = $opp
+onready var last_play = $last_play
+onready var score = $score
 
 
 
@@ -33,7 +34,7 @@ func _ready():
 
 func _on_timer_timeout():
 	curr_time += 1
-	$timer.set_text("%d"%(wait_time-curr_time))
+	$timer.set_text("%d "%(wait_time-curr_time))
 	if curr_time == wait_time:
 		curr_time = 0
 		if get_tree().is_network_server():
@@ -53,16 +54,24 @@ func update_screen():
 	print("Update Screen called")
 	round_label.set_text("%d"%curr_round)
 	if get_tree().is_network_server():
-		you.set_text("%d/%d"%[p1_last_score,p1_score])
-		opp.set_text("%d/%d"%[p2_last_score,p2_score])
+		score.set_text(" %d vs %d "%[p1_score,p2_score])
+		last_play.set_text("%s, %s"%[p1_label,p2_label])
 	else:
-		opp.set_text("%d/%d"%[p1_last_score,p1_score])
-		you.set_text("%d/%d"%[p2_last_score,p2_score])
+		score.set_text(" %d vs %d "%[p2_score,p1_score])
+		last_play.set_text("%s, %s"%[p2_label,p1_label])
 
 func update_state():
 	print("Update state called")
 	print("p1: %s, p2: %s"%[p1_move,p2_move])
 	if (p1_move>=0 and p2_move>=0):
+		if (p1_move==0):
+			p1_label = "Confess"
+		else:
+			p1_label = "Deny"
+		if(p2_move==0):
+			p2_label = "Confess"
+		else:
+			p2_label = "Deny"
 		#Confess,Confess
 		if(p1_move==0 and p2_move==0):
 			p1_score -=5

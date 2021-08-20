@@ -32,6 +32,8 @@ anchor_right = 1.0
 anchor_bottom = 0.55
 margin_left = 40.0
 margin_right = -40.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Host"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -43,7 +45,23 @@ anchor_right = 1.0
 anchor_bottom = 0.65
 margin_left = 40.0
 margin_right = -40.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Join"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cancel" type="Button" parent="."]
+visible = false
+anchor_top = 0.75
+anchor_right = 1.0
+anchor_bottom = 0.75
+margin_left = 40.0
+margin_right = -40.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Cancel"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -76,3 +94,4 @@ __meta__ = {
 
 [connection signal="pressed" from="host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="cancel" to="." method="_on_cancel_pressed"]

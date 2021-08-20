@@ -3,7 +3,33 @@
 [ext_resource path="res://assets/themes/font_120.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/themes/font_60.tres" type="DynamicFont" id=2]
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=1]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 1 )
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -28,8 +54,8 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 1, 0.0705882, 0.0705882, 1 )
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.592157, 0.592157, 0.592157, 1 )
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -42,7 +68,7 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
 [sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 1, 0.254902, 0.254902, 1 )
+bg_color = Color( 0.592157, 0.592157, 0.592157, 1 )
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -55,7 +81,6 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
 [sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.592157, 0.592157, 0.592157, 1 )
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -68,31 +93,6 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
 [sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0.592157, 0.592157, 0.592157, 1 )
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 1, 1, 1, 1 )
-border_blend = true
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-
-[sub_resource type="StyleBoxFlat" id=9]
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 1, 1, 1, 1 )
-border_blend = true
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-
-[sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.901961, 0.741176, 0, 1 )
 border_width_left = 3
 border_width_top = 3
@@ -113,11 +113,11 @@ Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = ExtResource( 1 )
-Button/styles/disabled = SubResource( 5 )
-Button/styles/focus = SubResource( 4 )
-Button/styles/hover = SubResource( 1 )
-Button/styles/normal = SubResource( 6 )
-Button/styles/pressed = SubResource( 4 )
+Button/styles/disabled = SubResource( 1 )
+Button/styles/focus = SubResource( 2 )
+Button/styles/hover = SubResource( 3 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 2 )
 LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
 LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
 LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
@@ -128,7 +128,7 @@ LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
 LineEdit/constants/minimum_spaces = 12
 LineEdit/fonts/font = ExtResource( 1 )
 LineEdit/icons/clear = null
-LineEdit/styles/focus = SubResource( 7 )
-LineEdit/styles/normal = SubResource( 8 )
-LineEdit/styles/read_only = SubResource( 9 )
-Panel/styles/panel = SubResource( 10 )
+LineEdit/styles/focus = SubResource( 5 )
+LineEdit/styles/normal = SubResource( 6 )
+LineEdit/styles/read_only = SubResource( 7 )
+Panel/styles/panel = SubResource( 8 )
