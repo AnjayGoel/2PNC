@@ -6,9 +6,10 @@ extends Control
 
 
 # Called when the node enters the scene tree for the first time.
+onready var message_label = $message
 func _ready():
 	if not get_tree().is_network_server():
-		get_node("Label").text = "Server is selecting the game"
+		message_label.set_text("Server is selecting the game")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,3 +25,9 @@ func load_prisoners_dilemma():
 
 	#Utils.goto_scene("prisoners_dilemma")
 	#rpc("Utils.goto_scene","prisoners_dilemma")
+
+remotesync func signal_end_game():
+	Utils.welcome_scene._end_game("")
+
+func _on_home_pressed():
+	rpc("signal_end_game")

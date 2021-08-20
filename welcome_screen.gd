@@ -22,6 +22,8 @@ func _ready():
 	get_tree().connect("connected_to_server", self, "_connected_ok")
 	get_tree().connect("connection_failed", self, "_connected_fail")
 	get_tree().connect("server_disconnected", self, "_server_disconnected")
+	get_tree().connect("server_disconnected", self, "_server_disconnected")
+	#get_tree().connect("end_game", self, "_end_game")
 	var root = get_tree().get_root()
 	Utils.welcome_scene = root.get_child(root.get_child_count() - 1)
 
@@ -31,6 +33,7 @@ func _ready():
 # Callback from SceneTree.
 func _player_connected(_id):
 	print("Player Con")
+	cancel_button.hide()
 	hide()
 	Utils.add_scene("game_list")
 
@@ -63,14 +66,20 @@ func _server_disconnected():
 
 
 func _end_game(with_error = ""):
+	var cnt = 0
 	for node in get_tree().get_root().get_children():
 		node.hide()
+		cnt = cnt+1
+	print("Count: %d"%cnt)
 	show()
 	get_tree().set_network_peer(null) # Remove peer.
 	host_button.set_disabled(false)
 	join_button.set_disabled(false)
-
-	_set_status(with_error, false)
+	
+	if (with_error!=""):
+		_set_status(with_error, false)
+	else:
+		_set_status("Host or join a game!",false)
 
 
 

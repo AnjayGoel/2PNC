@@ -130,17 +130,17 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="payoff_matix/GridContainer"]
-margin_right = 337.0
+margin_right = 330.0
 margin_bottom = 179.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "(You, Opp)"
+text = "You, Opp"
 align = 1
 valign = 1
 
 [node name="Label2" type="Label" parent="payoff_matix/GridContainer"]
-margin_left = 341.0
-margin_right = 668.0
+margin_left = 334.0
+margin_right = 664.0
 margin_bottom = 179.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -149,8 +149,8 @@ align = 1
 valign = 1
 
 [node name="Label3" type="Label" parent="payoff_matix/GridContainer"]
-margin_left = 672.0
-margin_right = 999.0
+margin_left = 668.0
+margin_right = 998.0
 margin_bottom = 179.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -160,7 +160,7 @@ valign = 1
 
 [node name="Label4" type="Label" parent="payoff_matix/GridContainer"]
 margin_top = 183.0
-margin_right = 337.0
+margin_right = 330.0
 margin_bottom = 362.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -169,9 +169,9 @@ align = 1
 valign = 1
 
 [node name="Label5" type="Label" parent="payoff_matix/GridContainer"]
-margin_left = 341.0
+margin_left = 334.0
 margin_top = 183.0
-margin_right = 668.0
+margin_right = 664.0
 margin_bottom = 362.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -180,9 +180,9 @@ align = 1
 valign = 1
 
 [node name="Label6" type="Label" parent="payoff_matix/GridContainer"]
-margin_left = 672.0
+margin_left = 668.0
 margin_top = 183.0
-margin_right = 999.0
+margin_right = 998.0
 margin_bottom = 362.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -192,7 +192,7 @@ valign = 1
 
 [node name="Label7" type="Label" parent="payoff_matix/GridContainer"]
 margin_top = 366.0
-margin_right = 337.0
+margin_right = 330.0
 margin_bottom = 545.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -201,9 +201,9 @@ align = 1
 valign = 1
 
 [node name="Label8" type="Label" parent="payoff_matix/GridContainer"]
-margin_left = 341.0
+margin_left = 334.0
 margin_top = 366.0
-margin_right = 668.0
+margin_right = 664.0
 margin_bottom = 545.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -212,9 +212,9 @@ align = 1
 valign = 1
 
 [node name="Label9" type="Label" parent="payoff_matix/GridContainer"]
-margin_left = 672.0
+margin_left = 668.0
 margin_top = 366.0
-margin_right = 999.0
+margin_right = 998.0
 margin_bottom = 545.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
