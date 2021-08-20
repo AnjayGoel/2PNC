@@ -12,7 +12,7 @@ func set_color(color: Color):
 	color.a = _curtain.color.a
 	_curtain.color = color
 
-func fade_scene(scene: String, add_on_top:bool =false, duration: float = DEFAULT_DURATION, delay: float = DEFAULT_DELAY):
+func fade_scene(scene: String="", add_on_top:bool =false, duration: float = DEFAULT_DURATION, delay: float = DEFAULT_DELAY):
 	if duration <= 0.0:
 		push_error("TRANSIT ERROR: change_scene duration must be > 0. Defaulting to %s" % DEFAULT_DURATION)
 		duration = DEFAULT_DURATION
@@ -31,10 +31,11 @@ func fade_scene(scene: String, add_on_top:bool =false, duration: float = DEFAULT
 	_animator.play("fade")
 	yield(_animator, "animation_finished")
 	
-	if add_on_top:
-		Utils.add_scene(scene)
-	else:
-		Utils.goto_scene(scene)
+	if scene!="":
+		if add_on_top:
+			Utils.add_scene(scene)
+		else:
+			Utils.goto_scene(scene)
 
 	# re-enable mouse interaction before fading back in
 	_curtain.mouse_filter = MOUSE_FILTER_IGNORE

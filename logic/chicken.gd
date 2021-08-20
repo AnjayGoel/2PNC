@@ -22,8 +22,8 @@ onready var round_label = $round
 onready var timer = $timer
 onready var last_play = $last_play
 onready var score = $score
-onready var confess_button = $confess
-onready var deny_button = $deny
+onready var swerve_button = $swerve
+onready var straight_button = $straight
 
 
 func _ready():
@@ -54,10 +54,10 @@ func _on_timer_timeout():
 
 func update_screen():
 	print("Update Screen")
-	confess_button.release_focus()
-	deny_button.release_focus()
-	confess_button.set_disabled(false)
-	deny_button.set_disabled(false)
+	swerve_button.release_focus()
+	straight_button.release_focus()
+	swerve_button.set_disabled(false)
+	straight_button.set_disabled(false)
 	round_label.set_text("%d "%state.curr_round)
 	if get_tree().is_network_server():
 		score.set_text(" %d vs %d "%[state.p1_score,state.p2_score])
@@ -73,37 +73,37 @@ func update_state():
 	print("p1: %s, p2: %s"%[state.p1_move,state.p2_move])
 	if (state.p1_move>=0 and state.p2_move>=0):
 		if (state.p1_move==0):
-			state.p1_label = "Confess"
+			state.p1_label = "Swerve"
 		else:
-			state.p1_label = "Deny"
+			state.p1_label = "Straight"
 		if(state.p2_move==0):
-			state.p2_label = "Confess"
+			state.p2_label = "Swerve"
 		else:
-			state.p2_label = "Deny"
-		#Confess,Confess
+			state.p2_label = "Straight"
+
 		if(state.p1_move==0 and state.p2_move==0):
-			state.p1_score -=5
-			state.p2_score -=5
-			state.p1_last_score = -5
-			state.p2_last_score = -5
-		#Confess,Deny
-		if(state.p1_move==0 and state.p2_move==1):
-			state.p1_score -=0
-			state.p2_score -=10
+			state.p1_score +=0
+			state.p2_score +=0
 			state.p1_last_score = 0
-			state.p2_last_score = -10
+			state.p2_last_score = 0
+
+		if(state.p1_move==0 and state.p2_move==1):
+			state.p1_score -=1
+			state.p2_score +=1
+			state.p1_last_score = -1
+			state.p2_last_score = +1
 		#Deny,Confess
 		if(state.p1_move==1 and state.p2_move==0):
-			state.p1_score -=10
-			state.p2_score -=0
-			state.p1_last_score = -10
-			state.p2_last_score = 0
+			state.p1_score +=1
+			state.p2_score -=1
+			state.p1_last_score = 1
+			state.p2_last_score = -1
 		#Deny,Deny
 		if(state.p1_move==1 and state.p2_move==1):
-			state.p1_score -=1
-			state.p2_score -=1
-			state.p1_last_score = -1
-			state.p2_last_score = -1
+			state.p1_score -=3
+			state.p2_score -=3
+			state.p1_last_score = -3
+			state.p2_last_score = -3
 		
 		state.p1_move = -1
 		state.p2_move = -1
@@ -119,8 +119,8 @@ sync func goto_scene(scene):
 
 
 func _on_loby_pressed():
+	print("Set Util Score: %d"%Utils.p1_score)
 	rpc("goto_scene","result")
-
 
 
 remotesync func sync_state(new_state):
@@ -129,16 +129,16 @@ remotesync func sync_state(new_state):
 	update_state()
 
 
-func _on_confess_pressed():
-	#confess_button.set_disabled(true)
-	deny_button.set_disabled(true)
+func _on_swerve_pressed():
+	#swerve_button.set_disabled(true)
+	straight_button.set_disabled(true)
 	if get_tree().is_network_server():
-		print("Deny server")
+		print("swerve server")
 		if(state.p1_move>=0):
 			return
 		state.p1_move = 0
 	else:
-		print("Deny Not server")
+		print("swerve Not server")
 		if(state.p2_move>=0):
 			return
 		state.p2_move = 0
@@ -147,16 +147,16 @@ func _on_confess_pressed():
 
 
 
-func _on_deny_pressed():
-	confess_button.set_disabled(true)
-	#deny_button.set_disabled(true)
+func _on_straight_pressed():
+	swerve_button.set_disabled(true)
+	#straight_button.set_disabled(true)
 	if get_tree().is_network_server():
-		print("Deny server")
+		print("straight server")
 		if(state.p1_move>=0):
 			return
 		state.p1_move = 1
 	else:
-		print("Deny Not server")
+		print("straight Not server")
 		if(state.p2_move>=0):
 			return
 		state.p2_move = 1

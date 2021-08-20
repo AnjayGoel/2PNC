@@ -1,0 +1,229 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://logic/chicken.gd" type="Script" id=2]
+[ext_resource path="res://assets/themes/left_end.tres" type="StyleBox" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 0.254902, 0.254902, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="Chicken" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 100.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="round" type="Label" parent="."]
+anchor_top = 0.06
+anchor_bottom = 0.11
+margin_top = 15.0
+margin_right = 40.0
+margin_bottom = 15.0
+size_flags_horizontal = 0
+custom_styles/normal = ExtResource( 3 )
+text = "  Round: 1 "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="timer" type="Label" parent="."]
+anchor_bottom = 0.05
+margin_top = 15.0
+margin_right = 40.0
+margin_bottom = 15.0
+custom_styles/normal = ExtResource( 3 )
+text = "  15 "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="score" type="Label" parent="."]
+anchor_left = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.05
+size_flags_horizontal = 4
+custom_styles/normal = SubResource( 1 )
+text = "0 vs 0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="last_play" type="Label" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.57
+text = "Last Play: NA, NA"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="swerve" type="Button" parent="."]
+anchor_top = 0.58
+anchor_right = 1.0
+anchor_bottom = 0.68
+margin_left = 40.0
+margin_right = -40.0
+text = "Swerve"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="straight" type="Button" parent="."]
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 0.8
+margin_left = 40.0
+margin_right = -40.0
+text = "Straight"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="loby" type="Button" parent="."]
+anchor_left = 0.7
+anchor_top = 0.9
+anchor_right = 0.99
+anchor_bottom = 0.99
+focus_mode = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "End"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="payoff_matix" type="Panel" parent="."]
+anchor_top = 0.15
+anchor_right = 1.0
+anchor_bottom = 0.45
+margin_left = 40.0
+margin_right = -40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="payoff_matix"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -906.636, 535.909 )
+theme = ExtResource( 1 )
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="payoff_matix/GridContainer"]
+margin_right = 330.0
+margin_bottom = 179.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "You, Opp"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="payoff_matix/GridContainer"]
+margin_left = 334.0
+margin_right = 664.0
+margin_bottom = 179.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Swerve"
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="payoff_matix/GridContainer"]
+margin_left = 668.0
+margin_right = 998.0
+margin_bottom = 179.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Straight"
+align = 1
+valign = 1
+
+[node name="Label4" type="Label" parent="payoff_matix/GridContainer"]
+margin_top = 183.0
+margin_right = 330.0
+margin_bottom = 362.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Swerve"
+align = 1
+valign = 1
+
+[node name="Label5" type="Label" parent="payoff_matix/GridContainer"]
+margin_left = 334.0
+margin_top = 183.0
+margin_right = 664.0
+margin_bottom = 362.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "0,0"
+align = 1
+valign = 1
+
+[node name="Label6" type="Label" parent="payoff_matix/GridContainer"]
+margin_left = 668.0
+margin_top = 183.0
+margin_right = 998.0
+margin_bottom = 362.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "-1,+1"
+align = 1
+valign = 1
+
+[node name="Label7" type="Label" parent="payoff_matix/GridContainer"]
+margin_top = 366.0
+margin_right = 330.0
+margin_bottom = 545.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Straight"
+align = 1
+valign = 1
+
+[node name="Label8" type="Label" parent="payoff_matix/GridContainer"]
+margin_left = 334.0
+margin_top = 366.0
+margin_right = 664.0
+margin_bottom = 545.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "+1,-1"
+align = 1
+valign = 1
+
+[node name="Label9" type="Label" parent="payoff_matix/GridContainer"]
+margin_left = 668.0
+margin_top = 366.0
+margin_right = 998.0
+margin_bottom = 545.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "-3,-3"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="swerve" to="." method="_on_swerve_pressed"]
+[connection signal="pressed" from="straight" to="." method="_on_straight_pressed"]
+[connection signal="pressed" from="loby" to="." method="_on_loby_pressed"]

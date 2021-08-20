@@ -31,3 +31,9 @@ remotesync func signal_end_game():
 
 func _on_home_pressed():
 	rpc("signal_end_game")
+
+
+func _on_game_of_chicken_pressed():
+	if get_tree().is_network_server():
+		print("Netowrk Server")
+		rpc("goto_game","chicken_startup")

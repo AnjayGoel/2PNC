@@ -9,7 +9,8 @@ extends Node
 var current_scene = null
 var lobby_scene = null
 var welcome_scene = null
-
+var p1_score = 0
+var p2_score = 0
 func _ready():
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() - 1)
