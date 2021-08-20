@@ -31,7 +31,6 @@ func _ready():
    add_child(timer) 
    timer.start() 
 
-
 func _on_timer_timeout():
 	curr_time += 1
 	$timer.set_text("%d"%(wait_time-curr_time))

@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=1]
-[ext_resource path="res://assets/themes/ws_font_small.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/themes/left_end.tres" type="StyleBox" id=2]
 [ext_resource path="res://prisoners_dilemma.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 0.254902, 0.254902, 1 )
+border_width_left = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [node name="PrisonersDilemma" type="Control"]
 anchor_right = 1.0
@@ -15,94 +25,72 @@ __meta__ = {
 }
 
 [node name="round" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.05
-margin_top = 40.0
-margin_right = -40.0
-custom_fonts/font = ExtResource( 2 )
-text = "Round: 0"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="timer" type="Label" parent="."]
-anchor_bottom = 0.05
-margin_left = 40.0
-custom_fonts/font = ExtResource( 2 )
-text = "15"
+anchor_top = 0.06
+anchor_bottom = 0.11
+margin_top = 15.0
+margin_right = 40.0
+margin_bottom = 15.0
+size_flags_horizontal = 0
+custom_styles/normal = ExtResource( 2 )
+text = "  Round: 1 "
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="opp" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.05
-anchor_right = 1.0
+[node name="timer" type="Label" parent="."]
 anchor_bottom = 0.05
-margin_top = 20.0
-margin_right = -40.0
-custom_fonts/font = ExtResource( 2 )
-text = "0/0"
-align = 2
+margin_top = 15.0
+margin_right = 40.0
+margin_bottom = 15.0
+custom_styles/normal = ExtResource( 2 )
+text = "  15 "
+align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="you" type="Label" parent="."]
-anchor_top = 0.05
-anchor_right = 0.5
+[node name="score" type="Label" parent="."]
+anchor_left = 0.4
+anchor_right = 0.6
 anchor_bottom = 0.05
-margin_left = 40.0
-margin_top = 40.0
-margin_bottom = 126.0
-custom_fonts/font = ExtResource( 2 )
-text = "0/0"
+custom_styles/normal = SubResource( 1 )
+text = "0 vs 0"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Payoff Detail" type="Label" parent="."]
-anchor_top = 0.15
+[node name="last_play" type="Label" parent="."]
+anchor_top = 0.52
 anchor_right = 1.0
-anchor_bottom = 0.15
-margin_left = 20.0
-margin_top = 40.0
-custom_fonts/font = ExtResource( 2 )
-text = "Payoff
-(You, Opponent)
-(Confess, Confess) = -5
-(Confess, Deny) = 0
-(Deny, Confess) = -10
-(Deny, Deny) = -1"
-valign = 1
+anchor_bottom = 0.57
+text = "Last Play: Confess, Deny"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="confess" type="Button" parent="."]
-anchor_top = 0.5
+anchor_top = 0.58
 anchor_right = 1.0
-anchor_bottom = 0.6
+anchor_bottom = 0.68
 margin_left = 40.0
 margin_right = -40.0
-custom_fonts/font = ExtResource( 2 )
 text = "Confess"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="deny" type="Button" parent="."]
-anchor_top = 0.65
+anchor_top = 0.7
 anchor_right = 1.0
-anchor_bottom = 0.75
+anchor_bottom = 0.8
 margin_left = 40.0
 margin_right = -40.0
-custom_fonts/font = ExtResource( 2 )
 text = "Deny"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -116,11 +104,123 @@ anchor_bottom = 1.0
 margin_left = 43.1748
 margin_right = -36.8252
 margin_bottom = -40.0
-custom_fonts/font = ExtResource( 2 )
-text = "Goto Lobby"
+text = " Lobby"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="payoff_matix" type="Panel" parent="."]
+anchor_top = 0.15
+anchor_right = 1.0
+anchor_bottom = 0.45
+margin_left = 40.0
+margin_right = -40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="payoff_matix"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -906.636, 535.909 )
+theme = ExtResource( 1 )
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="payoff_matix/GridContainer"]
+margin_right = 337.0
+margin_bottom = 179.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "(You, Opp)"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="payoff_matix/GridContainer"]
+margin_left = 341.0
+margin_right = 668.0
+margin_bottom = 179.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Confess"
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="payoff_matix/GridContainer"]
+margin_left = 672.0
+margin_right = 999.0
+margin_bottom = 179.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Deny"
+align = 1
+valign = 1
+
+[node name="Label4" type="Label" parent="payoff_matix/GridContainer"]
+margin_top = 183.0
+margin_right = 337.0
+margin_bottom = 362.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Confess"
+align = 1
+valign = 1
+
+[node name="Label5" type="Label" parent="payoff_matix/GridContainer"]
+margin_left = 341.0
+margin_top = 183.0
+margin_right = 668.0
+margin_bottom = 362.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "-5,-5"
+align = 1
+valign = 1
+
+[node name="Label6" type="Label" parent="payoff_matix/GridContainer"]
+margin_left = 672.0
+margin_top = 183.0
+margin_right = 999.0
+margin_bottom = 362.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "0,-10"
+align = 1
+valign = 1
+
+[node name="Label7" type="Label" parent="payoff_matix/GridContainer"]
+margin_top = 366.0
+margin_right = 337.0
+margin_bottom = 545.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Deny"
+align = 1
+valign = 1
+
+[node name="Label8" type="Label" parent="payoff_matix/GridContainer"]
+margin_left = 341.0
+margin_top = 366.0
+margin_right = 668.0
+margin_bottom = 545.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "-10,0"
+align = 1
+valign = 1
+
+[node name="Label9" type="Label" parent="payoff_matix/GridContainer"]
+margin_left = 672.0
+margin_top = 366.0
+margin_right = 999.0
+margin_bottom = 545.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "-1,-1"
+align = 1
+valign = 1
 
 [connection signal="pressed" from="confess" to="." method="_on_confess_pressed"]
 [connection signal="pressed" from="deny" to="." method="_on_deny_pressed"]
