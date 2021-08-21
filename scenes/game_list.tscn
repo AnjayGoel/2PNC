@@ -67,7 +67,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TickTackToe" type="Button" parent="."]
+[node name="centipede" type="Button" parent="."]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.6
@@ -76,7 +76,7 @@ margin_top = 10.0
 margin_right = -40.0
 rect_pivot_offset = Vector2( -2735.23, 779.588 )
 custom_fonts/font = ExtResource( 4 )
-text = "Tick Tack Toe"
+text = "Centipede"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -96,4 +96,5 @@ __meta__ = {
 [connection signal="pressed" from="prisoners_dillema" to="." method="_on_prisoners_dillema_pressed"]
 [connection signal="pressed" from="game_of_chicken" to="." method="_on_game_of_chicken_pressed"]
 [connection signal="pressed" from="shotgun" to="." method="_on_shotgun_pressed"]
+[connection signal="pressed" from="centipede" to="." method="_on_centipede_pressed"]
 [connection signal="pressed" from="home" to="." method="_on_home_pressed"]

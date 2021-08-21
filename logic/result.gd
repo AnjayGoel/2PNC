@@ -19,6 +19,8 @@ func _ready():
 			result_1()
 		"shotgun":
 			result_shotgun()
+		"centipede":
+			result_1()
 		_:
 			pass
 	Utils.game_scene_name = ""
@@ -33,8 +35,10 @@ func _ready():
 
 
 func result_1():
+	print(Utils.game_scene_name)
 	var p1_score = Utils.end_game_state.p1_score
 	var p2_score = Utils.end_game_state.p2_score
+	print("%d %d"%[p1_score,p2_score])
 	desc.hide()
 	if get_tree().is_network_server():
 		score.set_text("%d vs %d"%[p1_score,p2_score])
@@ -52,6 +56,7 @@ func result_1():
 			win_lose.set_text("Its A Tie!")
 		else:
 			win_lose.set_text("You Lose!")
+
 
 
 func result_shotgun():

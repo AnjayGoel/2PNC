@@ -46,6 +46,15 @@ func _ready():
 				Else the first person to reach 5 bullets wins.
 				"""
 			)
+		"centipede":
+			title.set_text("Centipede")
+			desc.set_text(
+				"""
+				Sequential game where you chose to take the payoff or continue 
+				for a greater reward in next chance. Game ends in a finite 
+				number or rounds.
+				"""
+			)
 		_:
 			pass
 	

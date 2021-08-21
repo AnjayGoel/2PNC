@@ -22,7 +22,6 @@ func _ready():
 	get_tree().connect("connected_to_server", self, "_connected_ok")
 	get_tree().connect("connection_failed", self, "_connected_fail")
 	get_tree().connect("server_disconnected", self, "_server_disconnected")
-	get_tree().connect("server_disconnected", self, "_server_disconnected")
 	#get_tree().connect("end_game", self, "_end_game")
 	var root = get_tree().get_root()
 	Utils.welcome_scene = root.get_child(root.get_child_count() - 1)

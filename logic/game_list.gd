@@ -35,3 +35,8 @@ remotesync func signal_end_game():
 
 func _on_home_pressed():
 	rpc("signal_end_game")
+
+
+func _on_centipede_pressed():
+	if get_tree().is_network_server():
+		rpc("goto_game","centipede")

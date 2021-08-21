@@ -1,0 +1,195 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://logic/centipede.gd" type="Script" id=2]
+[ext_resource path="res://assets/themes/left_end.tres" type="StyleBox" id=3]
+[ext_resource path="res://assets/themes/font_80.tres" type="DynamicFont" id=4]
+
+[node name="Centipede" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 100.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="round" type="Label" parent="."]
+anchor_top = 0.06
+anchor_bottom = 0.11
+margin_top = 15.0
+margin_right = 40.0
+margin_bottom = 15.0
+size_flags_horizontal = 0
+custom_styles/normal = ExtResource( 3 )
+text = "  Round: 1 "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="turn" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.05
+margin_left = 40.0
+margin_top = 15.0
+margin_right = -40.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Your Turn"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="timer" type="Label" parent="."]
+anchor_bottom = 0.05
+margin_top = 15.0
+margin_right = 40.0
+margin_bottom = 15.0
+custom_styles/normal = ExtResource( 3 )
+text = "  15 "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="continue" type="Button" parent="."]
+anchor_top = 0.65
+anchor_right = 1.0
+anchor_bottom = 0.75
+margin_left = 40.0
+margin_right = -40.0
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="end_here" type="Button" parent="."]
+anchor_top = 0.77
+anchor_right = 1.0
+anchor_bottom = 0.87
+margin_left = 40.0
+margin_right = -40.0
+text = "End Here"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="payoff_matix" type="Panel" parent="."]
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 40.0
+margin_right = -40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="payoff_matix"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -906.636, 535.909 )
+theme = ExtResource( 1 )
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="payoff_matix/GridContainer"]
+margin_right = 330.0
+margin_bottom = 271.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "This Round"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Label2" type="Label" parent="payoff_matix/GridContainer"]
+margin_left = 334.0
+margin_right = 664.0
+margin_bottom = 271.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Next Round"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Label3" type="Label" parent="payoff_matix/GridContainer"]
+margin_left = 668.0
+margin_right = 998.0
+margin_bottom = 271.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Next to next Round"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="curr_payoff" type="Label" parent="payoff_matix/GridContainer"]
+margin_top = 275.0
+margin_right = 330.0
+margin_bottom = 546.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "x,y"
+align = 1
+valign = 1
+
+[node name="next_payoff" type="Label" parent="payoff_matix/GridContainer"]
+margin_left = 334.0
+margin_top = 275.0
+margin_right = 664.0
+margin_bottom = 546.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "x-1,y+3"
+align = 1
+valign = 1
+
+[node name="next_to_next_payoff" type="Label" parent="payoff_matix/GridContainer"]
+margin_left = 668.0
+margin_top = 275.0
+margin_right = 998.0
+margin_bottom = 546.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "x+2,y+2"
+align = 1
+valign = 1
+
+[node name="payoff_label" type="Label" parent="."]
+anchor_top = 0.15
+anchor_right = 1.0
+anchor_bottom = 0.15
+margin_left = 40.0
+margin_right = -40.0
+text = "Payoff (You, Opponent)"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="last_payoff" type="Label" parent="."]
+anchor_top = 0.52
+anchor_right = 1.0
+anchor_bottom = 0.52
+margin_left = 40.0
+margin_right = -40.0
+margin_bottom = 75.0
+text = "Round 100: Either defect to (101,99) or honor (100,100)"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="end_here" to="." method="_on_end_here_pressed"]
