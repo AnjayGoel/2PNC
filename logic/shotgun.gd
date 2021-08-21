@@ -41,7 +41,8 @@ func _ready():
 	timer.set_one_shot(false)
 	add_child(timer) 
 	timer.start()
-	shoot_button.set_disabled(false)
+	shoot_button.set_disabled(true)
+
 
 func _on_timer_timeout():
 	state.curr_time += 1
@@ -55,11 +56,6 @@ func _on_timer_timeout():
 				state.p2_move = 0
 			rpc("sync_state",state)
 
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 func update_screen():
 	print("Update Screen")
@@ -82,7 +78,7 @@ func update_screen():
 			_get_move_name(state.p2_move)
 			])
 	else:
-		if (state.p1_bullets<1):
+		if (state.p2_bullets<1):
 			shoot_button.set_disabled(true)
 		else:
 			shoot_button.set_disabled(false)
@@ -93,20 +89,39 @@ func update_screen():
 			_get_move_name(state.p1_move)
 			])
 	
+	if is_end():
+		goto_scene("result")
+	else:
+		state.p1_move = -1
+		state.p2_move = -1
+		Transit.fade_scene()
 		
-	Transit.fade_scene()
+	
+
+func is_end():
+	if (state.p1_bullets==5 or state.p2_bullets==5):
+		return true
+	elif (state.p1_move==2 and state.p2_move!=0) or (state.p2_move==2 and state.p1_move!=0):
+		return true
+	else:
+		return false
+
 
 func update_state():
-	state.curr_round+=1
 	print("Update state")
 	print("p1: %s, p2: %s"%[state.p1_move,state.p2_move])
+	if (state.p1_move<0 or state.p2_move<0):
+		return
+	
+	state.curr_round+=1
+	
 	if state.p1_move==2:
 		state.p1_bullets-=1
 	if state.p2_move ==2:
 		state.p2_bullets-=1
 	if state.p1_move == 1:
 		state.p1_bullets+=1
-	if state.p2_move==1:
+	if state.p2_move == 1:
 		state.p2_bullets+=1
 	update_screen()
 
@@ -114,22 +129,20 @@ func update_state():
 
 
 sync func goto_scene(scene):
-	Utils.p1_score = state.p1_score
-	Utils.p2_score = state.p2_score
+	Utils.end_game_state = state
 	Transit.fade_scene(scene)
 
 
 
 
 remotesync func sync_state(new_state):
+	print("sync state")
 	state = new_state
 	update_state()
 
 
 func _on_shield_pressed():
-	#confess_button.set_disabled(true)
-	reload_button.set_disabled(true)
-	shoot_button.set_disabled(true)
+
 	if get_tree().is_network_server():
 		if(state.p1_move>=0):
 			return
@@ -139,14 +152,14 @@ func _on_shield_pressed():
 			return
 		state.p2_move = 0
 	
+	#confess_button.set_disabled(true)
+	reload_button.set_disabled(true)
+	shoot_button.set_disabled(true)
 	rpc("sync_state",state)
 
 
 
 func _on_reload_pressed():
-	shoot_button.set_disabled(true)
-	shield_button.set_disabled(true)
-
 	if get_tree().is_network_server():
 		if(state.p1_move>=0):
 			return
@@ -155,7 +168,8 @@ func _on_reload_pressed():
 		if(state.p2_move>=0):
 			return
 		state.p2_move = 1
-
+	shoot_button.set_disabled(true)
+	shield_button.set_disabled(true)
 	rpc("sync_state",state)
 
 

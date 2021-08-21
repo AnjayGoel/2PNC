@@ -17,8 +17,18 @@ func _ready():
 			result_1()
 		"chicken":
 			result_1()
+		"shotgun":
+			result_shotgun()
 		_:
 			pass
+	Utils.game_scene_name = ""
+	Utils.end_game_state = null
+	timer = Timer.new()
+	timer.connect("timeout",self,"_on_timer_timeout") 
+	timer.set_wait_time(1)
+	timer.set_one_shot(false)
+	add_child(timer) 
+	timer.start() 
 
 
 
@@ -43,15 +53,52 @@ func result_1():
 		else:
 			win_lose.set_text("You Lose!")
 
-	Utils.game_scene_name = ""
-	Utils.end_game_state = null
-	timer = Timer.new()
-	timer.connect("timeout",self,"_on_timer_timeout") 
-	timer.set_wait_time(1)
-	timer.set_one_shot(false)
-	add_child(timer) 
-	timer.start() 
 
+func result_shotgun():
+	var state = Utils.end_game_state
+	score.set_text("")
+	if get_tree().is_network_server():
+		if state.p1_move==2:
+			if state.p2_move==2:
+				win_lose.set_text("Its a Tie")
+				desc.set_text("You both shot simultaneously")
+			else:
+				win_lose.set_text("You Win!")
+				desc.set_text("You shot your opponent first")
+		elif state.p1_bullets==5:
+			if state.p2_bullets==5:
+				win_lose.set_text("Its a Tie")
+				desc.set_text("You both have 5 bullets")
+			else:
+				win_lose.set_text("You Win!")
+				desc.set_text("You have 5 bullets")
+		else:
+			win_lose.set_text("You Lose!")
+			if state.p2_move==2:
+				desc.set_text("Opponent shot you")
+			else:
+				desc.set_text("Opponent has 5 bullets")
+	else:
+		if state.p2_move==2:
+			if state.p1_move==2:
+				win_lose.set_text("Its a Tie")
+				desc.set_text("You both shot simultaneously")
+			else:
+				win_lose.set_text("You Win!")
+				desc.set_text("You shot your opponent first")
+		elif state.p2_bullets==5:
+			if state.p1_bullets==5:
+				win_lose.set_text("Its a Tie")
+				desc.set_text("You both have 5 bullets")
+			else:
+				win_lose.set_text("You Win!")
+				desc.set_text("You have 5 bullets")
+		else:
+			win_lose.set_text("You Lose!")
+			if state.p1_move==2:
+				desc.set_text("Opponent shot you")
+			else:
+				desc.set_text("Opponent has 5 bullets")
 
 func _on_timer_timeout():
 	curr_time += 1

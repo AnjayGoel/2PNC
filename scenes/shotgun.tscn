@@ -135,5 +135,5 @@ __meta__ = {
 }
 
 [connection signal="pressed" from="shield" to="." method="_on_shield_pressed"]
-[connection signal="pressed" from="reload" to="." method="_on_deny_pressed"]
-[connection signal="pressed" from="shoot" to="." method="_on_loby_pressed"]
+[connection signal="pressed" from="reload" to="." method="_on_reload_pressed"]
+[connection signal="pressed" from="shoot" to="." method="_on_shoot_pressed"]

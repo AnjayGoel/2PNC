@@ -6,7 +6,7 @@ onready var title = $title
 
 var timer = null
 var curr_time = 0
-var wait_time = 10
+var wait_time = 2
 
 
 func _ready():
