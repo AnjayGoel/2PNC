@@ -53,7 +53,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ShieldLoadShoot" type="Button" parent="."]
+[node name="shotgun" type="Button" parent="."]
 anchor_top = 0.4
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -62,7 +62,7 @@ margin_top = 10.0
 margin_right = -40.0
 rect_pivot_offset = Vector2( -2735.23, 779.588 )
 custom_fonts/font = ExtResource( 4 )
-text = "Shield Load Shoot"
+text = "Shotgun"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -93,6 +93,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="prisoners_dillema" to="." method="load_prisoners_dilemma"]
+[connection signal="pressed" from="prisoners_dillema" to="." method="_on_prisoners_dillema_pressed"]
 [connection signal="pressed" from="game_of_chicken" to="." method="_on_game_of_chicken_pressed"]
+[connection signal="pressed" from="shotgun" to="." method="_on_shotgun_pressed"]
 [connection signal="pressed" from="home" to="." method="_on_home_pressed"]

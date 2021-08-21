@@ -2,6 +2,7 @@ extends Control
 
 onready var start_label = $start_label
 onready var desc = $ScrollContainer/desc
+onready var title = $title
 
 var timer = null
 var curr_time = 0
@@ -11,6 +12,7 @@ var wait_time = 10
 func _ready():
 	match Utils.game_scene_name:
 		"prisoners_dilemma":
+			title.set_text("Prisoners Dilemma")
 			desc.set_text(
 				"""
 				You and your friend are suspected of committing a robbery 
@@ -23,6 +25,7 @@ func _ready():
 				)
 
 		"chicken":
+			title.set_text("Chicken")
 			desc.set_text(
 				"""
 				You and your friend are both headed for a single-lane bridge 
@@ -35,6 +38,7 @@ func _ready():
 				)
 
 		"shotgun":
+			title.set_text("Shotgun")
 			desc.set_text(
 				"""
 				Reload, Shield or Shoot. First one to get shot while other is 
