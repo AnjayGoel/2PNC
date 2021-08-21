@@ -17,7 +17,6 @@ var state = {
 	}
 
 
-
 onready var round_label = $round
 onready var timer = $timer
 onready var last_play = $last_play
@@ -113,13 +112,11 @@ func update_state():
 
 
 sync func goto_scene(scene):
-	Utils.p1_score = state.p1_score
-	Utils.p2_score = state.p2_score
+	Utils.end_game_state = state
 	Transit.fade_scene(scene)
 
 
 func _on_loby_pressed():
-	print("Set Util Score: %d"%Utils.p1_score)
 	rpc("goto_scene","result")
 
 

@@ -1,20 +1,17 @@
 extends Node
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
 var current_scene = null
 var lobby_scene = null
 var welcome_scene = null
-var p1_score = 0
-var p2_score = 0
+
+var game_scene_name = ""
+var end_game_state = null
+
+
 func _ready():
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() - 1)
-
 
 
 func get_ip():
@@ -44,14 +41,10 @@ func deferred_goto_scene(scene,hide=false):
 remote func goto_scene(scene):
 	call_deferred("deferred_goto_scene", scene)
 
+
 remote func add_scene(scene):
 	call_deferred("deferred_goto_scene", scene,true)
 
+
 func hide():
 	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-

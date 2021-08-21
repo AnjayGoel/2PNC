@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/themes/font_120.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/themes/font_180.tres" type="DynamicFont" id=3]
-[ext_resource path="res://result.gd" type="Script" id=4]
+[ext_resource path="res://logic/result.gd" type="Script" id=4]
 
 [node name="result" type="Control"]
 anchor_right = 1.0
@@ -36,7 +36,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="home_time" type="Label" parent="."]
+[node name="desc" type="Label" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.8
+custom_fonts/font = ExtResource( 2 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lobby_time" type="Label" parent="."]
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 0.8

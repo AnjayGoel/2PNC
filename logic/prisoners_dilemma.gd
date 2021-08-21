@@ -113,8 +113,7 @@ func update_state():
 
 
 sync func goto_scene(scene):
-	Utils.p1_score = state.p1_score
-	Utils.p2_score = state.p2_score
+	Utils.end_game_state = state
 	Transit.fade_scene(scene)
 
 
