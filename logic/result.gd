@@ -21,6 +21,8 @@ func _ready():
 			result_shotgun()
 		"centipede":
 			result_1()
+		"matching_pennies":
+			result_1()
 		_:
 			pass
 	Utils.game_scene_name = ""

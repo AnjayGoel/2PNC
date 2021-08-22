@@ -1,0 +1,290 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/themes/left_end.tres" type="StyleBox" id=3]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Control
+
+var state = {
+	wait_time = 20,
+	curr_time = 0,
+
+	curr_round = 1,
+	p1_score = 0,
+	p2_score = 0,
+	p1_last_score = 0,
+	p2_last_score = 0,
+
+	p1_move = -1,
+	p2_move =-1,
+	p1_label = \"\",
+	p2_label = \"\",
+	}
+
+
+onready var desc = $desc_panel/desc
+onready var round_label = $round
+onready var timer = $timer
+onready var last_play = $last_play
+onready var score = $score
+onready var head_button = $head
+onready var tail_button = $tail
+
+
+func _ready():
+	timer = Timer.new()
+	timer.connect(\"timeout\",self,\"_on_timer_timeout\") 
+	timer.set_wait_time(1) #value is in seconds: 600 seconds = 10 minutes
+	timer.set_one_shot(false)
+	add_child(timer) 
+	timer.start() 
+	if get_tree().is_network_server():
+		desc.set_text(\"\"\"You and opponent choose either head or tail. If 
+		both match you win, else your opponent wins\"\"\")
+	else:
+		desc.set_text(\"\"\"You and opponent choose either head or tail. If 
+		they don't match you win, else your opponent wins\"\"\")
+
+func _on_timer_timeout():
+	state.curr_time += 1
+	$timer.set_text(\"%d \"%(state.wait_time-state.curr_time))
+	if state.curr_time == state.wait_time:
+		state.curr_time = 0
+		if get_tree().is_network_server():
+			if (state.p1_move<0):
+				state.p1_move = 0
+			if (state.p2_move<0):
+				state.p2_move = 0
+			rpc(\"sync_state\",state)
+
+
+
+func update_screen():
+	print(\"Update Screen\")
+	head_button.release_focus()
+	tail_button.release_focus()
+	head_button.set_disabled(false)
+	tail_button.set_disabled(false)
+	round_label.set_text(\"%d \"%state.curr_round)
+	if get_tree().is_network_server():
+		score.set_text(\" %d vs %d \"%[state.p1_score,state.p2_score])
+		last_play.set_text(\"Last play: %s, %s\"%[state.p1_label,state.p2_label])
+	else:
+		score.set_text(\" %d vs %d \"%[state.p2_score,state.p1_score])
+		last_play.set_text(\"Last play: %s, %s\"%[state.p2_label,state.p1_label])
+	
+	Transit.fade_scene()
+
+func _get_label(move):
+	if (move==0):
+		return \"Head\"
+	else:
+		return \"Tail\"
+
+func update_state():
+	print(\"Update state\")
+	print(\"p1: %s, p2: %s\"%[state.p1_move,state.p2_move])
+	if (state.p1_move>=0 and state.p2_move>=0):
+		
+		state.p1_label = _get_label(state.p1_move)
+		state.p2_label = _get_label(state.p2_move)
+
+		#Confess,Confess
+		if(state.p1_move == state.p2_move):
+			state.p1_score +=1
+			state.p2_score -=1
+		else:
+			state.p1_score -=1
+			state.p2_score +=1
+		
+		state.p1_move = -1
+		state.p2_move = -1
+		state.curr_round+=1
+		state.curr_time = 0
+		update_screen()
+
+
+sync func goto_scene(scene):
+	Utils.end_game_state = state
+	Transit.fade_scene(scene)
+
+
+func _on_loby_pressed():
+	rpc(\"goto_scene\",\"result\")
+
+
+
+remotesync func sync_state(new_state):
+	print(\"sync state\")
+	state = new_state
+	update_state()
+
+
+func _on_head_pressed():
+	#head_button.set_disabled(true)
+	tail_button.set_disabled(true)
+	if get_tree().is_network_server():
+		print(\"Deny server\")
+		if(state.p1_move>=0):
+			return
+		state.p1_move = 0
+	else:
+		print(\"Deny Not server\")
+		if(state.p2_move>=0):
+			return
+		state.p2_move = 0
+	
+	rpc(\"sync_state\",state)
+
+
+
+func _on_tail_pressed():
+	head_button.set_disabled(true)
+	#tail_button.set_disabled(true)
+	if get_tree().is_network_server():
+		print(\"Deny server\")
+		if(state.p1_move>=0):
+			return
+		state.p1_move = 1
+	else:
+		print(\"Deny Not server\")
+		if(state.p2_move>=0):
+			return
+		state.p2_move = 1
+
+	rpc(\"sync_state\",state)
+
+"
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 0.254902, 0.254902, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="MatchingPennies" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 100.0
+theme = ExtResource( 1 )
+script = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="round" type="Label" parent="."]
+anchor_top = 0.06
+anchor_bottom = 0.11
+margin_top = 15.0
+margin_right = 40.0
+margin_bottom = 15.0
+size_flags_horizontal = 0
+custom_styles/normal = ExtResource( 3 )
+text = "  Round: 1 "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="timer" type="Label" parent="."]
+anchor_bottom = 0.05
+margin_top = 15.0
+margin_right = 40.0
+margin_bottom = 15.0
+custom_styles/normal = ExtResource( 3 )
+text = "  15 "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="score" type="Label" parent="."]
+anchor_left = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.05
+size_flags_horizontal = 4
+custom_styles/normal = SubResource( 1 )
+text = "0 vs 0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="last_play" type="Label" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.57
+text = "Last Play: NA, NA"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="head" type="Button" parent="."]
+anchor_top = 0.58
+anchor_right = 1.0
+anchor_bottom = 0.68
+margin_left = 40.0
+margin_right = -40.0
+text = "Head"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tail" type="Button" parent="."]
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 0.8
+margin_left = 40.0
+margin_right = -40.0
+text = "Tail"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="loby" type="Button" parent="."]
+anchor_left = 0.7
+anchor_top = 0.9
+anchor_right = 0.99
+anchor_bottom = 0.99
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "End"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="desc_panel" type="Panel" parent="."]
+anchor_top = 0.15
+anchor_right = 1.0
+anchor_bottom = 0.45
+margin_left = 40.0
+margin_right = -40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="desc" type="Label" parent="desc_panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="head" to="." method="_on_head_pressed"]
+[connection signal="pressed" from="tail" to="." method="_on_tail_pressed"]
+[connection signal="pressed" from="loby" to="." method="_on_loby_pressed"]

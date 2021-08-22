@@ -44,3 +44,8 @@ func _on_home_pressed():
 func _on_centipede_pressed():
 	if get_tree().is_network_server():
 		rpc("goto_game","centipede")
+
+
+func _on_matching_pennies_pressed():
+	if get_tree().is_network_server():
+		rpc("goto_game","matching_pennies")

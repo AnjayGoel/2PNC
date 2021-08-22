@@ -55,6 +55,14 @@ func _ready():
 				number or rounds.
 				"""
 			)
+		"matching_pennies":
+			title.set_text("Matching Pennies")
+			if get_tree().is_network_server():
+				desc.set_text("""You and opponent choose either head or tail. If 
+				both match you win, else your opponent wins""")
+			else:
+				desc.set_text("""You and opponent choose either head or tail. If 
+				they don't match you win, else your opponent wins""")
 		_:
 			pass
 	
