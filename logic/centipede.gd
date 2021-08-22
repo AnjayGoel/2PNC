@@ -47,11 +47,7 @@ func _on_timer_timeout():
 
 
 func update_state():
-	if state.curr_round==10:
-		state.p1_score = 10
-		state.p2_score = 10
-
-	elif state.turn == 0:
+	if state.turn == 0:
 		state.p1_score -=1
 		state.p2_score+=3
 	elif state.turn == 1:
@@ -60,12 +56,12 @@ func update_state():
 		
 	state.turn = 1-state.turn
 	state.curr_round+=1
+	state.curr_time = 0
 	
 
 func update_screen():
 	print("Update Screen")
-	if state.curr_round>10:
-		rpc("goto_scene","result")
+
 	continue_button.release_focus()
 	end_button.release_focus()
 	continue_button.set_disabled(true)
@@ -107,8 +103,11 @@ func update_screen():
 		next_payoff.set_text("10, 10")
 	if state.curr_round == 9:
 		ntn_payoff.set_text("10, 10")
-	
-	Transit.fade_scene()
+		
+	if state.curr_round>10:
+		goto_scene("result")
+	else:
+		Transit.fade_scene()
 
 
 sync func goto_scene(scene):
@@ -126,9 +125,15 @@ func _on_continue_pressed():
 	if ((get_tree().is_network_server() and state.turn == 1)
 	 or (not get_tree().is_network_server() and state.turn == 0)):
 		return
-
-	update_state()
-	rpc("sync_state",state)
+		
+	if state.curr_round==10:
+		state.p1_score = 10
+		state.p2_score = 10
+		rpc("sync_state",state)
+		rpc("goto_scene","result")
+	else:
+		update_state()
+		rpc("sync_state",state)
 
 
 func _on_end_here_pressed():

@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/themes/font_120.tres" type="DynamicFont" id=2]
 [ext_resource path="res://logic/game_list.gd" type="Script" id=3]
 [ext_resource path="res://assets/themes/font_60.tres" type="DynamicFont" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
 [node name="GameList" type="Control"]
 anchor_right = 1.0
@@ -27,74 +30,96 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="prisoners_dillema" type="Button" parent="."]
-anchor_top = 0.7
-anchor_right = 1.0
-anchor_bottom = 0.8
-margin_left = 40.0
-margin_top = 10.0
-margin_right = -40.0
-custom_fonts/font = ExtResource( 4 )
-text = "Prisoners Dillema"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="game_of_chicken" type="Button" parent="."]
-anchor_top = 0.6
-anchor_right = 1.0
-anchor_bottom = 0.7
-margin_left = 40.0
-margin_top = 10.0
-margin_right = -40.0
-custom_fonts/font = ExtResource( 4 )
-text = "Game of Chicken"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="shotgun" type="Button" parent="."]
-anchor_top = 0.4
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = 40.0
-margin_top = 10.0
-margin_right = -40.0
-rect_pivot_offset = Vector2( -2735.23, 779.588 )
-custom_fonts/font = ExtResource( 4 )
-text = "Shotgun"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="centipede" type="Button" parent="."]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.6
-margin_left = 40.0
-margin_top = 10.0
-margin_right = -40.0
-rect_pivot_offset = Vector2( -2735.23, 779.588 )
-custom_fonts/font = ExtResource( 4 )
-text = "Centipede"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="home" type="Button" parent="."]
-anchor_left = 0.7
-anchor_top = 0.85
+anchor_left = 0.75
+anchor_top = 0.9
 anchor_right = 1.0
-anchor_bottom = 0.95
-margin_right = -40.0
+anchor_bottom = 1.0
+margin_right = -30.0
+margin_bottom = -30.0
 custom_fonts/font = ExtResource( 4 )
 text = "Home"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="prisoners_dillema" to="." method="_on_prisoners_dillema_pressed"]
-[connection signal="pressed" from="game_of_chicken" to="." method="_on_game_of_chicken_pressed"]
-[connection signal="pressed" from="shotgun" to="." method="_on_shotgun_pressed"]
-[connection signal="pressed" from="centipede" to="." method="_on_centipede_pressed"]
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.8
+margin_left = 40.0
+margin_right = -40.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer"]
+margin_right = 1000.0
+margin_bottom = 1152.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/ScrollContainer"]
+margin_right = 1000.0
+margin_bottom = 1152.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="prisoners_dillema" type="Button" parent="PanelContainer/ScrollContainer/GridContainer"]
+margin_right = 1000.0
+margin_bottom = 285.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Prisoners Dillema"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="game_of_chicken" type="Button" parent="PanelContainer/ScrollContainer/GridContainer"]
+margin_top = 289.0
+margin_right = 1000.0
+margin_bottom = 574.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Game of Chicken"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shotgun" type="Button" parent="PanelContainer/ScrollContainer/GridContainer"]
+margin_top = 578.0
+margin_right = 1000.0
+margin_bottom = 863.0
+rect_pivot_offset = Vector2( -2735.23, 779.588 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Shotgun"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="centipede" type="Button" parent="PanelContainer/ScrollContainer/GridContainer"]
+margin_top = 867.0
+margin_right = 1000.0
+margin_bottom = 1152.0
+rect_pivot_offset = Vector2( -2735.23, 779.588 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Centipede"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="PanelContainer/ScrollContainer/GridContainer/prisoners_dillema" to="." method="_on_prisoners_dillema_pressed"]
+[connection signal="pressed" from="PanelContainer/ScrollContainer/GridContainer/game_of_chicken" to="." method="_on_game_of_chicken_pressed"]
+[connection signal="pressed" from="PanelContainer/ScrollContainer/GridContainer/shotgun" to="." method="_on_shotgun_pressed"]
+[connection signal="pressed" from="PanelContainer/ScrollContainer/GridContainer/centipede" to="." method="_on_centipede_pressed"]

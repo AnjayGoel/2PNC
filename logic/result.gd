@@ -38,17 +38,22 @@ func result_1():
 	print(Utils.game_scene_name)
 	var p1_score = Utils.end_game_state.p1_score
 	var p2_score = Utils.end_game_state.p2_score
-	print("%d %d"%[p1_score,p2_score])
+	print("%d--%d"%[p1_score,p2_score])
 	desc.hide()
 	if get_tree().is_network_server():
+		print("server")
 		score.set_text("%d vs %d"%[p1_score,p2_score])
+		print(score.text)
 		if p1_score>p2_score:
+			print("win!!!!")
 			win_lose.set_text("You Win!")
 		elif p1_score == p2_score:
+			print("Tie")
 			win_lose.set_text("Its A Tie!")
 		else:
 			win_lose.set_text("You Lose!")
 	else:
+		print("Client")
 		score.set_text("%d vs %d"%[p2_score,p1_score])
 		if p2_score>p1_score:
 			win_lose.set_text("You Win!")

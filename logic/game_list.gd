@@ -4,6 +4,10 @@ onready var message_label = $message
 
 func _ready():
 	if not get_tree().is_network_server():
+		
+		var grid_cont  = $PanelContainer/ScrollContainer/GridContainer
+		for node in grid_cont.get_children():
+			node.set_disabled(true)
 		message_label.set_text("Server is selecting the game")
 
 
