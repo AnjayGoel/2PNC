@@ -145,6 +145,6 @@ func result_shotgun():
 func _on_timer_timeout():
 	curr_time += 1
 	lobby_label.set_text("Lobby in %d..."%(wait_time-curr_time))
-	if curr_time == wait_time:
+	if curr_time == wait_time and get_tree().network_peer !=null:
 		Transit.fade_scene("game_list")
 
