@@ -23,6 +23,8 @@ func _ready():
 			result_1()
 		"matching_pennies":
 			result_1()
+		"dollar_auction":
+			result_auction()
 		_:
 			pass
 	Utils.game_scene_name = ""
@@ -34,6 +36,34 @@ func _ready():
 	add_child(timer) 
 	timer.start() 
 
+
+func result_auction():
+	desc.hide()
+	print("%0.2f"%Utils.end_game_state.p1_bid)
+	var p1_payoff = -Utils.end_game_state.p1_bid
+	var p2_payoff =  -Utils.end_game_state.p2_bid
+	if (Utils.end_game_state.p1_bid>Utils.end_game_state.p2_bid):
+		p1_payoff+=1
+	elif (Utils.end_game_state.p1_bid<Utils.end_game_state.p2_bid):
+		p2_payoff+=1
+	print("$%0.2f vs $%0.2f"%[p1_payoff,p2_payoff])
+	if p1_payoff>p2_payoff:
+		if get_tree().is_network_server():
+			win_lose.set_text("You Win!")
+			score.set_text("$%0.2f vs $%0.2f"%[p1_payoff,p2_payoff])
+		else:
+			win_lose.set_text("You Lose!")
+			score.set_text("$%0.2f vs $%0.2f"%[p2_payoff,p1_payoff])
+	elif p1_payoff == p2_payoff:
+		win_lose.set_text("Its a Tie!")
+		score.set_text("$%0.2f vs $%0.2f"%[p2_payoff,p1_payoff])
+	else:
+		if get_tree().is_network_server():
+			win_lose.set_text("You Lose!")
+			score.set_text("$%0.2f vs $%0.2f"%[p1_payoff,p2_payoff])
+		else:
+			win_lose.set_text("You Win!")
+			score.set_text("$%0.2f vs $%0.2f"%[p2_payoff,p1_payoff])
 
 
 func result_1():

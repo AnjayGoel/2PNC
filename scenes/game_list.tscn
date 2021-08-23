@@ -71,7 +71,7 @@ size_flags_vertical = 3
 
 [node name="prisoners_dillema" type="Button" parent="PanelContainer/ScrollContainer/GridContainer"]
 margin_right = 1000.0
-margin_bottom = 227.0
+margin_bottom = 188.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 4 )
@@ -81,9 +81,9 @@ __meta__ = {
 }
 
 [node name="matching_pennies" type="Button" parent="PanelContainer/ScrollContainer/GridContainer"]
-margin_top = 231.0
+margin_top = 192.0
 margin_right = 1000.0
-margin_bottom = 458.0
+margin_bottom = 380.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 4 )
@@ -93,9 +93,9 @@ __meta__ = {
 }
 
 [node name="game_of_chicken" type="Button" parent="PanelContainer/ScrollContainer/GridContainer"]
-margin_top = 462.0
+margin_top = 384.0
 margin_right = 1000.0
-margin_bottom = 689.0
+margin_bottom = 572.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 4 )
@@ -105,9 +105,9 @@ __meta__ = {
 }
 
 [node name="shotgun" type="Button" parent="PanelContainer/ScrollContainer/GridContainer"]
-margin_top = 693.0
+margin_top = 576.0
 margin_right = 1000.0
-margin_bottom = 920.0
+margin_bottom = 764.0
 rect_pivot_offset = Vector2( -2735.23, 779.588 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -118,14 +118,27 @@ __meta__ = {
 }
 
 [node name="centipede" type="Button" parent="PanelContainer/ScrollContainer/GridContainer"]
-margin_top = 924.0
+margin_top = 768.0
 margin_right = 1000.0
-margin_bottom = 1151.0
+margin_bottom = 956.0
 rect_pivot_offset = Vector2( -2735.23, 779.588 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 4 )
 text = "Centipede"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dollar_auction" type="Button" parent="PanelContainer/ScrollContainer/GridContainer"]
+margin_top = 960.0
+margin_right = 1000.0
+margin_bottom = 1148.0
+rect_pivot_offset = Vector2( -2735.23, 779.588 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Dollar Auction"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -136,3 +149,4 @@ __meta__ = {
 [connection signal="pressed" from="PanelContainer/ScrollContainer/GridContainer/game_of_chicken" to="." method="_on_game_of_chicken_pressed"]
 [connection signal="pressed" from="PanelContainer/ScrollContainer/GridContainer/shotgun" to="." method="_on_shotgun_pressed"]
 [connection signal="pressed" from="PanelContainer/ScrollContainer/GridContainer/centipede" to="." method="_on_centipede_pressed"]
+[connection signal="pressed" from="PanelContainer/ScrollContainer/GridContainer/dollar_auction" to="." method="_on_dollar_auction_pressed"]

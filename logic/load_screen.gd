@@ -63,6 +63,15 @@ func _ready():
 			else:
 				desc.set_text("""You and opponent choose either head or tail. If 
 				they don't match you win, else your opponent wins""")
+		"dollar_auction":
+			title.set_text("Dollar Auction")
+			desc.set_text(
+				"""
+				You and your friend bet (in cents) on a dollar bill. The dollar 
+				goes to the winner, however, the second-highest bidder also 
+				loses the amount that they bid. You have to maximize your profit
+				"""
+			)
 		_:
 			pass
 	

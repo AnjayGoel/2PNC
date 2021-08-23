@@ -1,0 +1,220 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://logic/dollar_auction.gd" type="Script" id=2]
+[ext_resource path="res://assets/themes/left_end.tres" type="StyleBox" id=3]
+[ext_resource path="res://assets/themes/font_60.tres" type="DynamicFont" id=5]
+
+[node name="DollarAuction" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 100.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="round" type="Label" parent="."]
+visible = false
+anchor_top = 0.06
+anchor_bottom = 0.11
+margin_top = 15.0
+margin_right = 40.0
+margin_bottom = 15.0
+size_flags_horizontal = 0
+custom_styles/normal = ExtResource( 3 )
+text = "  Round: 1 "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="timer" type="Label" parent="."]
+anchor_bottom = 0.05
+margin_top = 15.0
+margin_right = 40.0
+margin_bottom = 15.0
+custom_styles/normal = ExtResource( 3 )
+text = "  15 "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="last_play" type="Label" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.57
+text = "Bids:  0$ (you) vs 0$ (opp.)"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bids" type="GridContainer" parent="."]
+anchor_top = 0.58
+anchor_right = 1.0
+anchor_bottom = 0.78
+margin_left = 40.0
+margin_right = -40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="one" type="Button" parent="bids"]
+margin_right = 247.0
+margin_bottom = 180.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 5 )
+enabled_focus_mode = 0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="two" type="Button" parent="bids"]
+margin_left = 251.0
+margin_right = 498.0
+margin_bottom = 180.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 5 )
+enabled_focus_mode = 0
+text = "5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="three" type="Button" parent="bids"]
+margin_left = 502.0
+margin_right = 749.0
+margin_bottom = 180.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 5 )
+enabled_focus_mode = 0
+text = "5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="four" type="Button" parent="bids"]
+margin_left = 753.0
+margin_right = 1000.0
+margin_bottom = 180.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 5 )
+enabled_focus_mode = 0
+text = "15"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="five" type="Button" parent="bids"]
+margin_top = 184.0
+margin_right = 247.0
+margin_bottom = 364.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 5 )
+enabled_focus_mode = 0
+text = "20"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="six" type="Button" parent="bids"]
+margin_left = 251.0
+margin_top = 184.0
+margin_right = 498.0
+margin_bottom = 364.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 5 )
+enabled_focus_mode = 0
+text = "25"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="seven" type="Button" parent="bids"]
+margin_left = 502.0
+margin_top = 184.0
+margin_right = 749.0
+margin_bottom = 364.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 5 )
+enabled_focus_mode = 0
+text = "30"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="eight" type="Button" parent="bids"]
+margin_left = 753.0
+margin_top = 184.0
+margin_right = 1000.0
+margin_bottom = 364.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 5 )
+enabled_focus_mode = 0
+text = "35"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="forefit" type="Button" parent="."]
+anchor_top = 0.82
+anchor_right = 1.0
+anchor_bottom = 0.92
+margin_left = 40.0
+margin_right = -40.0
+text = "Forefit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="desc_panel" type="Panel" parent="."]
+anchor_top = 0.15
+anchor_right = 1.0
+anchor_bottom = 0.45
+margin_left = 40.0
+margin_right = -40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="desc" type="Label" parent="desc_panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+text = "You and your friend bet on a dollar bill. The dollar goes to the highest bidder, however, the second-highest bidder also loses the amount that they bid."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="forefit" to="." method="_on_forefit_pressed"]
