@@ -42,6 +42,7 @@ size_flags_vertical = 3
 custom_fonts/font = ExtResource( 4 )
 text = "Your Turn"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -173,6 +174,7 @@ margin_left = 40.0
 margin_right = -40.0
 text = "Payoff (You, Opponent)"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -186,6 +188,7 @@ margin_right = -40.0
 margin_bottom = 75.0
 text = "Round 100: Either defect to (101,99) or honor (100,100)"
 align = 1
+valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

@@ -21,6 +21,7 @@ anchor_bottom = 0.4
 custom_fonts/font = ExtResource( 3 )
 text = "You Win"
 align = 1
+valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -33,6 +34,7 @@ anchor_bottom = 0.5
 custom_fonts/font = ExtResource( 3 )
 text = "0 vs 0"
 align = 1
+valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

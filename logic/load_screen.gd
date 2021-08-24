@@ -41,9 +41,9 @@ func _ready():
 			title.set_text("Shotgun")
 			desc.set_text(
 				"""
-				Reload, Shield or Shoot. First one to get shot while other is 
-				reloading loses.  Incase both shoot simultaneously, its a tie. 
-				Else the first person to reach 5 bullets wins.
+				Reload, Shield or Shoot. First one to get shot while reloading 
+				loses. Incase both shoot simultaneously, its a tie. Else the 
+				first person to reach 5 bullets wins.
 				"""
 			)
 		"centipede":
@@ -51,25 +51,25 @@ func _ready():
 			desc.set_text(
 				"""
 				Sequential game where you chose to take the payoff or continue 
-				for a greater reward in next chance. Game ends in a finite 
+				for a greater reward in next to next round. Game ends in a finite 
 				number or rounds.
 				"""
 			)
 		"matching_pennies":
 			title.set_text("Matching Pennies")
 			if get_tree().is_network_server():
-				desc.set_text("""You and opponent choose either head or tail. If 
-				both match you win, else your opponent wins""")
+				desc.set_text("""You and your friend choose either head or tail. If 
+				both match you win, else your friend wins""")
 			else:
-				desc.set_text("""You and opponent choose either head or tail. If 
-				they don't match you win, else your opponent wins""")
+				desc.set_text("""You and your friend choose either head or tail. If 
+				they don't match you win, else your friend wins""")
 		"dollar_auction":
 			title.set_text("Dollar Auction")
 			desc.set_text(
 				"""
-				You and your friend bet (in cents) on a dollar bill. The dollar 
-				goes to the winner, however, the second-highest bidder also 
-				loses the amount that they bid. You have to maximize your profit
+				You and your friend bet on a dollar bill. The dollar goes to the 
+				highest bidder. However, the second-highest bidder also loses 
+				the amount that they bid. You have to maximize your own profit.
 				"""
 			)
 		_:

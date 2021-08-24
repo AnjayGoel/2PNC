@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/themes/left_end.tres" type="StyleBox" id=3]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Control
 
 var state = {
@@ -157,7 +157,7 @@ func _on_tail_pressed():
 
 "
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 0.254902, 0.254902, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -173,7 +173,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 100.0
 theme = ExtResource( 1 )
-script = SubResource( 2 )
+script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -211,7 +211,7 @@ anchor_left = 0.4
 anchor_right = 0.6
 anchor_bottom = 0.05
 size_flags_horizontal = 4
-custom_styles/normal = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
 text = "0 vs 0"
 align = 1
 valign = 1
@@ -280,6 +280,8 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = -10.0
 margin_bottom = -10.0
+align = 1
+valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

@@ -129,6 +129,8 @@ margin_top = 20.0
 margin_right = -20.0
 size_flags_vertical = 1
 text = "Reload, Shield or Shoot. First one to get shot while other is reloading loses.  Incase both shoot simultaneously, its a tie. Else the first person to reach 5 bullets wins."
+align = 1
+valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
