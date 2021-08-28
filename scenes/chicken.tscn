@@ -12,6 +12,8 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 1, 1, 1, 1 )
 border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
@@ -57,6 +59,8 @@ __meta__ = {
 anchor_left = 0.4
 anchor_right = 0.6
 anchor_bottom = 0.05
+margin_top = 15.0
+margin_bottom = 15.0
 size_flags_horizontal = 4
 custom_styles/normal = SubResource( 1 )
 text = "0 vs 0"

@@ -107,6 +107,9 @@ func result_shotgun():
 			else:
 				win_lose.set_text("You Win!")
 				desc.set_text("You shot your opponent first")
+		elif state.p2_move==2:
+			win_lose.set_text("You Lose!")
+			desc.set_text("Opponent shot you")
 		elif state.p1_bullets==5:
 			if state.p2_bullets==5:
 				win_lose.set_text("Its a Tie")
@@ -114,12 +117,6 @@ func result_shotgun():
 			else:
 				win_lose.set_text("You Win!")
 				desc.set_text("You have 5 bullets")
-		else:
-			win_lose.set_text("You Lose!")
-			if state.p2_move==2:
-				desc.set_text("Opponent shot you")
-			else:
-				desc.set_text("Opponent has 5 bullets")
 	else:
 		if state.p2_move==2:
 			if state.p1_move==2:
@@ -128,6 +125,9 @@ func result_shotgun():
 			else:
 				win_lose.set_text("You Win!")
 				desc.set_text("You shot your opponent first")
+		elif state.p1_move==2:
+			win_lose.set_text("You Lose!")
+			desc.set_text("Opponent shot you")
 		elif state.p2_bullets==5:
 			if state.p1_bullets==5:
 				win_lose.set_text("Its a Tie")
@@ -135,12 +135,6 @@ func result_shotgun():
 			else:
 				win_lose.set_text("You Win!")
 				desc.set_text("You have 5 bullets")
-		else:
-			win_lose.set_text("You Lose!")
-			if state.p1_move==2:
-				desc.set_text("Opponent shot you")
-			else:
-				desc.set_text("Opponent has 5 bullets")
 
 func _on_timer_timeout():
 	curr_time += 1
