@@ -1,16 +1,4 @@
-# Pong Multiplayer
+# 2PNC
 
-A multiplayer demo of Pong. One player presses "host".
-The other presses "join". This only works locally.
+A collection of two player (local multiplayer) non cooperative games, made using Godot.
 
-Language: GDScript
-
-Renderer: GLES 2
-
-Note: The non-multiplayer version is available [here](https://github.com/godotengine/godot-demo-projects/tree/master/2d/pong).
-
-Check out this demo on the asset library: https://godotengine.org/asset-library/asset/138
-
-## Screenshots
-
-![Screenshot](screenshots/pong_multiplayer.png)

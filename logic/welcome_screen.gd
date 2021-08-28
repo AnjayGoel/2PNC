@@ -36,9 +36,9 @@ func _player_connected(_id):
 func _player_disconnected(_id):
 	print("Player Dis")
 	if get_tree().is_network_server():
-		_end_game("Client disconnected")
+		_end_game("Client disconnected!")
 	else:
-		_end_game("Server disconnected")
+		_end_game("Server disconnected!")
 
 
 func _connected_ok():
@@ -46,7 +46,7 @@ func _connected_ok():
 
 
 func _connected_fail():
-	_set_status("Couldn't connect", false)
+	_set_status("Couldn't connect!", false)
 
 	get_tree().set_network_peer(null) # Remove peer.
 	host_button.set_disabled(false)
@@ -55,7 +55,7 @@ func _connected_fail():
 
 func _server_disconnected():
 	print("Server Dis")
-	_end_game("Server disconnected")
+	_end_game("Server disconnected!")
 
 
 func _end_game(with_error = ""):
@@ -113,7 +113,7 @@ func _on_join_pressed():
 	var ip = address.get_text()
 	print("Join --%s--"%ip)
 	if not ip.is_valid_ip_address():
-		_set_status("IP address is invalid", false)
+		_set_status("IP address is invalid!", false)
 		return
 
 	peer = NetworkedMultiplayerENet.new()

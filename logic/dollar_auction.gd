@@ -17,7 +17,7 @@ onready var last_play = $last_play
 onready var score = $score
 onready var head_button = $head
 onready var tail_button = $tail
-
+onready var forefeit = $forefit
 
 func _ready():
 	for button in $bids.get_children():
@@ -47,8 +47,16 @@ func _on_timer_timeout():
 func update_screen():
 	print("Update Screen")
 	if get_tree().is_network_server():
+		if state.p1_bid>state.p2_bid:
+			forefeit.set_disabled(true)
+		else:
+			forefeit.set_disabled(false)
 		last_play.set_text("Bids:  %0.2f$ (you) vs %0.2f$ (opp.)"%[state.p1_bid,state.p2_bid])
 	else:
+		if state.p2_bid>state.p1_bid:
+			forefeit.set_disabled(true)
+		else:
+			forefeit.set_disabled(false)
 		last_play.set_text("Bids:  %0.2f$ (you) vs %0.2f$ (opp.)"%[state.p2_bid,state.p1_bid])
 	Transit.fade_scene()
 	var bid = max(state.p1_bid,state.p2_bid)+0.05
