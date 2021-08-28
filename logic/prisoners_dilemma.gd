@@ -17,7 +17,6 @@ var state = {
 	}
 
 
-
 onready var round_label = $round
 onready var timer = $timer
 onready var last_play = $last_play
@@ -34,6 +33,7 @@ func _ready():
    add_child(timer) 
    timer.start() 
 
+
 func _on_timer_timeout():
 	state.curr_time += 1
 	$timer.set_text("%d "%(state.wait_time-state.curr_time))
@@ -46,11 +46,6 @@ func _on_timer_timeout():
 				state.p2_move = 0
 			rpc("sync_state",state)
 
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 func update_screen():
 	print("Update Screen")
@@ -67,6 +62,7 @@ func update_screen():
 		last_play.set_text("Last play: %s, %s"%[state.p2_label,state.p1_label])
 	
 	Transit.fade_scene()
+
 
 func update_state():
 	print("Update state")
@@ -121,7 +117,6 @@ func _on_loby_pressed():
 	rpc("goto_scene","result")
 
 
-
 remotesync func sync_state(new_state):
 	print("sync state")
 	state = new_state
@@ -143,7 +138,6 @@ func _on_confess_pressed():
 		state.p2_move = 0
 	
 	rpc("sync_state",state)
-
 
 
 func _on_deny_pressed():

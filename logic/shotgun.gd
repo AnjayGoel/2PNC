@@ -13,7 +13,6 @@ var state = {
 	}
 
 
-
 onready var round_label = $round
 onready var timer = $timer
 onready var last_play = $last_play
@@ -95,8 +94,7 @@ func update_screen():
 		state.p1_move = -1
 		state.p2_move = -1
 		Transit.fade_scene()
-		
-	
+
 
 func is_end():
 	if (state.p1_bullets==5 or state.p2_bullets==5):
@@ -126,13 +124,9 @@ func update_state():
 	update_screen()
 
 
-
-
 sync func goto_scene(scene):
 	Utils.end_game_state = state
 	Transit.fade_scene(scene)
-
-
 
 
 remotesync func sync_state(new_state):
@@ -156,7 +150,6 @@ func _on_shield_pressed():
 	reload_button.set_disabled(true)
 	shoot_button.set_disabled(true)
 	rpc("sync_state",state)
-
 
 
 func _on_reload_pressed():
@@ -186,4 +179,3 @@ func _on_shoot_pressed():
 	shield_button.set_disabled(true)
 	reload_button.set_disabled(true)
 	rpc("sync_state",state)
-

@@ -114,7 +114,6 @@ func _on_loby_pressed():
 	rpc(\"goto_scene\",\"result\")
 
 
-
 remotesync func sync_state(new_state):
 	print(\"sync state\")
 	state = new_state

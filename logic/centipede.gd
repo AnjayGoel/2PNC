@@ -6,7 +6,7 @@ var state = {
 
 	curr_round = 1,
 	turn = 0,
-	p1_score = 2,
+	p1_score = 0,
 	p2_score = 0,
 }
 
@@ -43,7 +43,6 @@ func _on_timer_timeout():
 		(not get_tree().is_network_server() and state.turn == 1)):
 			update_state()
 			rpc("sync_state",state)
-
 
 
 func update_state():
@@ -103,7 +102,7 @@ func update_screen():
 		next_payoff.set_text("10, 10")
 	if state.curr_round == 9:
 		ntn_payoff.set_text("10, 10")
-		
+
 	if state.curr_round>10:
 		goto_scene("result")
 	else:

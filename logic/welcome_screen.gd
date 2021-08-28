@@ -12,7 +12,6 @@ onready var cancel_button = $cancel
 onready var status = $status
 
 
-
 var peer = null
 
 func _ready():
@@ -27,9 +26,6 @@ func _ready():
 	Utils.welcome_scene = root.get_child(root.get_child_count() - 1)
 
 
-
-
-# Callback from SceneTree.
 func _player_connected(_id):
 	print("Player Con")
 	cancel_button.hide()
@@ -45,12 +41,10 @@ func _player_disconnected(_id):
 		_end_game("Server disconnected")
 
 
-# Callback from SceneTree, only for clients (not server).
 func _connected_ok():
-	pass # This function is not needed for this project.
+	pass
 
 
-# Callback from SceneTree, only for clients (not server).
 func _connected_fail():
 	_set_status("Couldn't connect", false)
 
@@ -81,7 +75,6 @@ func _end_game(with_error = ""):
 		_set_status("Host or join a game!",false)
 
 
-
 func _on_cancel_pressed ():
 	get_tree().set_network_peer(null)
 	host_button.set_disabled(false)
@@ -89,9 +82,11 @@ func _on_cancel_pressed ():
 	cancel_button.hide()
 	_set_status("Host or join a game!",true)
 
+
 func _set_status(text, isok):
 	print(isok)
 	status.set_text(text)
+
 
 func _on_host_pressed():
 	print("Host Start")
@@ -108,8 +103,6 @@ func _on_host_pressed():
 	get_tree().set_network_peer(peer)
 	print("Waiting")
 	_set_status("Connect to %s, Waiting for player..."%Utils.get_ip(), true)
-
-
 
 
 func _on_join_pressed():

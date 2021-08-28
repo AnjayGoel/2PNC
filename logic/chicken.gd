@@ -46,11 +46,6 @@ func _on_timer_timeout():
 			rpc("sync_state",state)
 
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
 func update_screen():
 	print("Update Screen")
 	swerve_button.release_focus()
@@ -91,13 +86,13 @@ func update_state():
 			state.p2_score +=1
 			state.p1_last_score = -1
 			state.p2_last_score = +1
-		#Deny,Confess
+		
 		if(state.p1_move==1 and state.p2_move==0):
 			state.p1_score +=1
 			state.p2_score -=1
 			state.p1_last_score = 1
 			state.p2_last_score = -1
-		#Deny,Deny
+		
 		if(state.p1_move==1 and state.p2_move==1):
 			state.p1_score -=3
 			state.p2_score -=3

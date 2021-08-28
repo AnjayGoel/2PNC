@@ -17,6 +17,17 @@ sync func goto_game(scene):
 	Transit.fade_scene("load_screen")
 
 
+remotesync func signal_end_game():
+	if not get_tree().is_network_server():
+		Utils.welcome_scene._end_game("Server Disconnected!")
+	else:
+		Utils.welcome_scene._end_game("")
+
+
+func _on_home_pressed():
+	rpc("signal_end_game")
+
+
 func _on_prisoners_dillema_pressed():
 	if get_tree().is_network_server():
 		rpc("goto_game","prisoners_dilemma")
@@ -32,15 +43,6 @@ func _on_shotgun_pressed():
 		rpc("goto_game","shotgun")
 
 
-
-remotesync func signal_end_game():
-	Utils.welcome_scene._end_game("")
-
-
-func _on_home_pressed():
-	rpc("signal_end_game")
-
-
 func _on_centipede_pressed():
 	if get_tree().is_network_server():
 		rpc("goto_game","centipede")
@@ -49,7 +51,7 @@ func _on_centipede_pressed():
 func _on_dollar_auction_pressed():
 	if get_tree().is_network_server():
 		rpc("goto_game","dollar_auction")
-		
+
 
 func _on_matching_pennies_pressed():
 	if get_tree().is_network_server():

@@ -95,7 +95,6 @@ func result_1():
 			win_lose.set_text("You Lose!")
 
 
-
 func result_shotgun():
 	var state = Utils.end_game_state
 	score.set_text("")
@@ -135,6 +134,7 @@ func result_shotgun():
 			else:
 				win_lose.set_text("You Win!")
 				desc.set_text("You have 5 bullets")
+
 
 func _on_timer_timeout():
 	curr_time += 1
