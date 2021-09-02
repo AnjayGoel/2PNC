@@ -54,10 +54,10 @@ func update_screen():
 	straight_button.set_disabled(false)
 	round_label.set_text("%d "%state.curr_round)
 	if get_tree().is_network_server():
-		score.set_text(" %d vs %d "%[state.p1_score,state.p2_score])
+		score.set_text("Score\n%d vs %d "%[state.p1_score,state.p2_score])
 		last_play.set_text("Last play: %s, %s"%[state.p1_label,state.p2_label])
 	else:
-		score.set_text(" %d vs %d "%[state.p2_score,state.p1_score])
+		score.set_text("Score\n%d vs %d "%[state.p2_score,state.p1_score])
 		last_play.set_text("Last play: %s, %s"%[state.p2_label,state.p1_label])
 	
 	Transit.fade_scene()

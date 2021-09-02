@@ -71,7 +71,7 @@ func update_screen():
 		else:
 			shoot_button.set_disabled(false)
 		
-		score.set_text(" %d vs %d "%[state.p1_bullets,state.p2_bullets])
+		score.set_text("Bullets\n%d vs %d "%[state.p1_bullets,state.p2_bullets])
 		last_play.set_text("Last play: %s, %s"%[
 			_get_move_name(state.p1_move),
 			_get_move_name(state.p2_move)
@@ -82,7 +82,7 @@ func update_screen():
 		else:
 			shoot_button.set_disabled(false)
 
-		score.set_text(" %d vs %d "%[state.p2_bullets,state.p1_bullets])
+		score.set_text("Bullets\n%d vs %d "%[state.p2_bullets,state.p1_bullets])
 		last_play.set_text("Last play: %s, %s"%[
 			_get_move_name(state.p2_move),
 			_get_move_name(state.p1_move)

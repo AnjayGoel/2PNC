@@ -68,10 +68,10 @@ func update_screen():
 	tail_button.set_disabled(false)
 	round_label.set_text(\"%d \"%state.curr_round)
 	if get_tree().is_network_server():
-		score.set_text(\" %d vs %d \"%[state.p1_score,state.p2_score])
+		score.set_text(\"Score\\n%d vs %d \"%[state.p1_score,state.p2_score])
 		last_play.set_text(\"Last play: %s, %s\"%[state.p1_label,state.p2_label])
 	else:
-		score.set_text(\" %d vs %d \"%[state.p2_score,state.p1_score])
+		score.set_text(\"Score\\n%d vs %d \"%[state.p2_score,state.p1_score])
 		last_play.set_text(\"Last play: %s, %s\"%[state.p2_label,state.p1_label])
 	
 	Transit.fade_scene()
@@ -211,11 +211,14 @@ __meta__ = {
 anchor_left = 0.4
 anchor_right = 0.6
 anchor_bottom = 0.05
+margin_left = -15.0
 margin_top = 15.0
+margin_right = 15.0
 margin_bottom = 15.0
 size_flags_horizontal = 4
 custom_styles/normal = SubResource( 2 )
-text = "0 vs 0"
+text = "Score
+0 vs 0"
 align = 1
 valign = 1
 __meta__ = {
