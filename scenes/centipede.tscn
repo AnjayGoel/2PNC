@@ -186,7 +186,8 @@ anchor_bottom = 0.52
 margin_left = 40.0
 margin_right = -40.0
 margin_bottom = 75.0
-text = "Round 10: Either defect to (11,7) or honor (10,10)"
+text = "Last Round:
+Honor (10,10) or Defect  (11,7)"
 align = 1
 valign = 1
 autowrap = true

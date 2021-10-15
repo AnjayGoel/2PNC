@@ -20,6 +20,7 @@ onready var tail_button = $tail
 onready var forefeit = $forefit
 
 func _ready():
+	self.add_child(Utils.button_click_sound)
 	for button in $bids.get_children():
 		button.connect("pressed", self, "on_bid_button_pressed", [button])
 	timer = Timer.new()
@@ -66,6 +67,7 @@ func update_screen():
 	
 	
 func on_bid_button_pressed(button):
+	Utils.play_button_sound()
 	print(button.text.substr(1).to_float())
 	set_bid(button.text.substr(1).to_float())
 	button.release_focus()
@@ -90,4 +92,5 @@ remotesync func sync_state(new_state):
 	update_screen()
 
 func _on_forefit_pressed():
+	Utils.play_button_sound()
 	rpc("goto_scene","result")

@@ -24,6 +24,7 @@ func _ready():
 	#get_tree().connect("end_game", self, "_end_game")
 	var root = get_tree().get_root()
 	Utils.welcome_scene = root.get_child(root.get_child_count() - 1)
+	self.add_child(Utils.button_click_sound)
 
 
 func _player_connected(_id):
@@ -76,6 +77,7 @@ func _end_game(with_error = ""):
 
 
 func _on_cancel_pressed ():
+	Utils.play_button_sound()
 	get_tree().set_network_peer(null)
 	host_button.set_disabled(false)
 	join_button.set_disabled(false)
@@ -90,6 +92,7 @@ func _set_status(text, isok):
 
 func _on_host_pressed():
 	print("Host Start")
+	Utils.play_button_sound()
 	cancel_button.show()
 	host_button.set_disabled(true)
 	join_button.set_disabled(true)
@@ -107,6 +110,7 @@ func _on_host_pressed():
 
 func _on_join_pressed():
 	print("Join Pressed")
+	Utils.play_button_sound()
 	cancel_button.show()
 	host_button.set_disabled(true)
 	join_button.set_disabled(true)

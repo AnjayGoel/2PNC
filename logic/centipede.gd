@@ -22,6 +22,7 @@ onready var ntn_payoff = $payoff_matix/GridContainer/next_to_next_payoff
 
 
 func _ready():
+	self.add_child(Utils.button_click_sound)
 	timer = Timer.new()
 	timer.connect("timeout",self,"_on_timer_timeout") 
 	timer.set_wait_time(1)
@@ -121,6 +122,7 @@ remotesync func sync_state(new_state):
 
 
 func _on_continue_pressed():
+	Utils.play_button_sound()
 	if ((get_tree().is_network_server() and state.turn == 1)
 	 or (not get_tree().is_network_server() and state.turn == 0)):
 		return
@@ -136,6 +138,7 @@ func _on_continue_pressed():
 
 
 func _on_end_here_pressed():
+	Utils.play_button_sound()
 	if ((get_tree().is_network_server() and state.turn == 1)
 	 or (not get_tree().is_network_server() and state.turn ==0)):
 		return

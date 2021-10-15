@@ -65,8 +65,8 @@ margin_right = 15.0
 margin_bottom = 15.0
 size_flags_horizontal = 4
 custom_styles/normal = SubResource( 1 )
-text = "Score
-0 vs 0"
+text = " Bullets 
+ 0 vs 0 "
 align = 1
 valign = 1
 __meta__ = {

@@ -27,6 +27,7 @@ onready var tail_button = $tai;
 
 
 func _ready():
+	self.add_child(Utils.button_click_sound)
 	timer = Timer.new()
 	timer.connect("timeout",self,"_on_timer_timeout") 
 	timer.set_wait_time(1) #value is in seconds: 600 seconds = 10 minutes
@@ -105,6 +106,7 @@ sync func goto_scene(scene):
 
 
 func _on_loby_pressed():
+	Utils.play_button_sound()
 	rpc("goto_scene","result")
 
 
@@ -116,6 +118,7 @@ remotesync func sync_state(new_state):
 
 
 func _on_confess_pressed():
+	Utils.play_button_sound()
 	#head_button.set_disabled(true)
 	tail_button.set_disabled(true)
 	if get_tree().is_network_server():
@@ -134,6 +137,7 @@ func _on_confess_pressed():
 
 
 func _on_deny_pressed():
+	Utils.play_button_sound()
 	head_button.set_disabled(true)
 	#tail_button.set_disabled(true)
 	if get_tree().is_network_server():

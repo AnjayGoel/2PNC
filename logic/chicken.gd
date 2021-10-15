@@ -26,12 +26,13 @@ onready var straight_button = $straight
 
 
 func _ready():
-   timer = Timer.new()
-   timer.connect("timeout",self,"_on_timer_timeout") 
-   timer.set_wait_time(1) #value is in seconds: 600 seconds = 10 minutes
-   timer.set_one_shot(false)
-   add_child(timer) 
-   timer.start() 
+	self.add_child(Utils.button_click_sound)
+	timer = Timer.new()
+	timer.connect("timeout",self,"_on_timer_timeout") 
+	timer.set_wait_time(1)
+	timer.set_one_shot(false)
+	add_child(timer)
+	timer.start() 
 
 func _on_timer_timeout():
 	state.curr_time += 1
@@ -52,12 +53,12 @@ func update_screen():
 	straight_button.release_focus()
 	swerve_button.set_disabled(false)
 	straight_button.set_disabled(false)
-	round_label.set_text("%d "%state.curr_round)
+	round_label.set_text("Round %d "%state.curr_round)
 	if get_tree().is_network_server():
-		score.set_text("Score\n%d vs %d "%[state.p1_score,state.p2_score])
+		score.set_text(" Score\n% d vs %d "%[state.p1_score,state.p2_score])
 		last_play.set_text("Last play: %s, %s"%[state.p1_label,state.p2_label])
 	else:
-		score.set_text("Score\n%d vs %d "%[state.p2_score,state.p1_score])
+		score.set_text(" Score\n %d vs %d "%[state.p2_score,state.p1_score])
 		last_play.set_text("Last play: %s, %s"%[state.p2_label,state.p1_label])
 	
 	Transit.fade_scene()
@@ -112,6 +113,7 @@ sync func goto_scene(scene):
 
 
 func _on_loby_pressed():
+	Utils.play_button_sound()
 	rpc("goto_scene","result")
 
 
@@ -122,6 +124,7 @@ remotesync func sync_state(new_state):
 
 
 func _on_swerve_pressed():
+	Utils.play_button_sound()
 	#swerve_button.set_disabled(true)
 	straight_button.set_disabled(true)
 	if get_tree().is_network_server():
@@ -140,6 +143,7 @@ func _on_swerve_pressed():
 
 
 func _on_straight_pressed():
+	Utils.play_button_sound()
 	swerve_button.set_disabled(true)
 	#straight_button.set_disabled(true)
 	if get_tree().is_network_server():

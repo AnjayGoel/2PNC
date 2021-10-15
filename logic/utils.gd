@@ -7,11 +7,22 @@ var welcome_scene = null
 
 var game_scene_name = ""
 var end_game_state = null
+var button_click_sound = null
+var ui_sound = true
+var bg_music = true
 
 
 func _ready():
+	button_click_sound = AudioStreamPlayer.new();
+	button_click_sound.stream = load("res://assets/sounds/button_click.mp3")
+	print("sound loaded")
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() - 1)
+
+
+func play_button_sound():
+	if ui_sound:
+		button_click_sound.play()
 
 
 func get_ip():

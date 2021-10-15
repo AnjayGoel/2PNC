@@ -41,6 +41,7 @@ func _ready():
 	add_child(timer) 
 	timer.start()
 	shoot_button.set_disabled(true)
+	self.add_child(Utils.button_click_sound)
 
 
 func _on_timer_timeout():
@@ -64,14 +65,14 @@ func update_screen():
 	shield_button.set_disabled(false)
 	reload_button.set_disabled(false)
 	
-	round_label.set_text("%d "%state.curr_round)
+	round_label.set_text("Round %d "%state.curr_round)
 	if get_tree().is_network_server():
 		if (state.p1_bullets<1):
 			shoot_button.set_disabled(true)
 		else:
 			shoot_button.set_disabled(false)
 		
-		score.set_text("Bullets\n%d vs %d "%[state.p1_bullets,state.p2_bullets])
+		score.set_text(" Bullets\n %d vs %d "%[state.p1_bullets,state.p2_bullets])
 		last_play.set_text("Last play: %s, %s"%[
 			_get_move_name(state.p1_move),
 			_get_move_name(state.p2_move)
@@ -82,7 +83,7 @@ func update_screen():
 		else:
 			shoot_button.set_disabled(false)
 
-		score.set_text("Bullets\n%d vs %d "%[state.p2_bullets,state.p1_bullets])
+		score.set_text(" Bullets\n %d vs %d "%[state.p2_bullets,state.p1_bullets])
 		last_play.set_text("Last play: %s, %s"%[
 			_get_move_name(state.p2_move),
 			_get_move_name(state.p1_move)
@@ -112,6 +113,7 @@ func update_state():
 		return
 	
 	state.curr_round+=1
+	state.curr_time = 0 
 	
 	if state.p1_move==2:
 		state.p1_bullets-=1
@@ -136,7 +138,7 @@ remotesync func sync_state(new_state):
 
 
 func _on_shield_pressed():
-
+	Utils.play_button_sound()
 	if get_tree().is_network_server():
 		if(state.p1_move>=0):
 			return
@@ -153,6 +155,7 @@ func _on_shield_pressed():
 
 
 func _on_reload_pressed():
+	Utils.play_button_sound()
 	if get_tree().is_network_server():
 		if(state.p1_move>=0):
 			return
@@ -167,6 +170,7 @@ func _on_reload_pressed():
 
 
 func _on_shoot_pressed():
+	Utils.play_button_sound()
 	if get_tree().is_network_server():
 		if (state.p1_bullets<1 or state.p1_move>=0):
 			return

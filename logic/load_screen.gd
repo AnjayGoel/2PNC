@@ -15,7 +15,7 @@ func _ready():
 			title.set_text("Prisoners Dilemma")
 			desc.set_text(
 				"""
-				You and your friend are suspected of committing a robbery together. Both of you are isolated and urged to confess. If you both confess, both go to jail for five years. If neither of you confesses, both go to jail for one year and if one of you confesses while the other does not, confessor goes free while the silent person goes to jail for 10  years.
+				You and your opponent are suspected of committing a robbery together. Both of you are isolated and urged to confess. If you both confess, both go to jail for five years. If neither of you confesses, both go to jail for one year and if one of you confesses while the other does not, confessor goes free while the silent person goes to jail for 10  years.
 				"""
 				)
 
@@ -23,7 +23,7 @@ func _ready():
 			title.set_text("Chicken")
 			desc.set_text(
 				"""
-				You and your friend are both headed for a single-lane bridge from opposite directions. If neither of you swerves (changes direction), the result is a deadly collision. If you both swerves, its a tie. However if you swerve and your friend does not, he wins and you are a chicken. Similarly, if your friend swerves and you don't, you win and your friend is called a chicken. """
+				You and your opponent are both headed for a single-lane bridge from opposite directions. If neither of you swerves (changes direction), the result is a deadly collision. If you both swerves, its a tie. However if you swerve and your opponent does not, he wins and you are a chicken and vice-versa."""
 				)
 
 		"shotgun":
@@ -43,14 +43,14 @@ func _ready():
 		"matching_pennies":
 			title.set_text("Matching Pennies")
 			if get_tree().is_network_server():
-				desc.set_text("""You and your friend choose either head or tail. If both match you win, else your friend wins""")
+				desc.set_text("""You and your opponent choose either head or tail. If both match you win, else your opponent wins""")
 			else:
-				desc.set_text("""You and your friend choose either head or tail. If they don't match you win, else your friend wins""")
+				desc.set_text("""You and your opponent choose either head or tail. If they don't match you win, else your opponent wins""")
 		"dollar_auction":
 			title.set_text("Dollar Auction")
 			desc.set_text(
 				"""
-				You and your friend bet on a dollar bill. The dollar goes to the highest bidder. However, the second-highest bidder also loses the amount that they bid. You have to maximize your own profit.
+				You and your opponent bet on a dollar bill. The dollar goes to the highest bidder. However, the second-highest bidder also loses the amount that they bid. You have to maximize your own profit.
 				"""
 			)
 		_:
